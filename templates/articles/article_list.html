@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Вся правда об электонных сигаретах{% endblock %}
+{% block h1 %}Вся правда об электонных сигаретах{% endblock %}
+
+{% block body %}
+    <ul>
+    {% for article in article_list %}
+        <li>
+            <h2><a href="{% url article_detail article.slug %}">{{ article.title }}</a></h2>
+            <div>{{ article.short_text }}</div>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

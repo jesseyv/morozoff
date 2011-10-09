@@ -1,0 +1,26 @@
+{% load thumbnail %}
+{% if product %}
+<div class="brief">
+    <div class="image">
+        {% if product.logo %}
+            {% thumbnail product.logo.src "132x200" crop="center" as im %}
+                <img src="{{ im.url }}" alt="{{ product.logo.alt }}" />
+            {% endthumbnail %}
+        {% endif %}
+    </div>
+    <h2 class="title"><a href="{% url product_detail product.slug %}">{{ product.get_name }}</a></h2>
+    {% autoescape off %}
+    <div class="description">{{ product.description }}</div>
+    {% endautoescape %}
+    <div class="price">{{ product.unit_price }}р</div>
+    <div class="buy">
+        <form method="post" action="{% url cart %}">{% csrf_token %}
+            <input type="hidden" name="add_item_id" value="{{ product.pk }}">
+            <input type="hidden" name="add_item_quantity" value="1">
+            <input type="image" src="{{ STATIC_URL }}images/to_buy.jpg">
+        </form>
+    </div>
+{% block add_info %}
+{% endblock %}
+</div>
+{% endif %}

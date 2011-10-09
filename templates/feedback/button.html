@@ -1,0 +1,20 @@
+<div id="feedback_drop" class="hiding"></div>
+<div id="feedback_popup" class="hiding">
+    <form class="feedback" action="/feedback/ajax{{ request.path }}" method="post">
+        {% csrf_token %}
+        <div class="name error"></div>
+        <label for="email">Ваш email для обратной связи</label>
+            <input name="email"/>
+        <div class="subject error"> </div>
+        <label for="subject">Тема (необязательно)</label>
+            <input name="subject"/>
+        <div class="text error"> </div>
+        <label for="text">Сообщение</label>
+            <textarea name="text"></textarea>
+        <div class="buttons">
+            <button>Отправить</button>
+        </div>
+    </form>
+    <div class="thanks hiding">Спасибо за Ваше сообщение!</div>
+    <div class="close"></div>
+</div>

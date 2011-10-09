@@ -1,0 +1,59 @@
+{% load sitetree shop_tags banners %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>{% block title %}{{ object.title }}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/base.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/feedback.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/prettyPhoto.css" media="screen" />
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="logo"><img src="{{ STATIC_URL }}images/logo.gif" alt="savvamorozoff.com"></div>
+            <div class="orgname"><img src="{{ STATIC_URL }}images/addr.png" alt="savvamorozoff.com"/></div>
+            <div class="slogan">Элитные пуховики от производителя</div>
+            <div class="phone"><p><strong>+7 (906) 715-17-25</strong></p></div>
+        </div>
+        <div class="nav">
+            {% sitetree_menu from "topmenu" include "trunk,mainpage" %}
+            <i class="lb"></i><i class="rb"></i>
+        </div>
+
+        <div class="mider">
+            <div class="content">
+                {% block content %}
+                <div class="body">
+                    {% block body %}
+                    {{ object.content|linebreaksbr }}
+                    {% endblock %}
+                </div>
+                {% endblock %}
+            </div>
+            <div class="rightside">
+                {% block rightside %}
+                    {% cart %}
+{#                    {% banner "free_delivery" %}#}
+                {% endblock %}
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="footer">
+            <div class="copy">
+                <p>&copy; savvamorozoff.com</p>
+                <p>Все права защищены</p>
+            </div>
+            <div class="madein">
+                <noindex>Сделано в <a rel="noindex" href="http://pystars.com">pystars.com</a></noindex>
+            </div>
+        </div>
+    </div>
+    {% include 'feedback/button.html' %}
+    <script type="text/javascript" src="//yandex.st/jquery/1.6.3/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.form.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.prettyPhoto.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/base.js"></script>
+    <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
+</body>
+</html>

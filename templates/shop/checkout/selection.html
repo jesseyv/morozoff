@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block leftside %}
+    <div class="margin-leftside">&nbsp;</div>
+{% endblock %}
+{% block rightside %}{% endblock %}
+
+{% block content %}
+<h1>Оформление заказа</h1>
+    <form method="POST">
+    {% csrf_token %}
+        <table>
+            <tr>
+                <th>{{ shipping_address.name.label_tag }}</th>
+                <td>{{ shipping_address.name }}</td>
+            </tr>
+            <tr>
+                <th>{{ shipping_address.phone.label_tag }}</th>
+                <td>{{ shipping_address.phone }}</td>
+            </tr>
+            <tr>
+                <th>{{ shipping_address.email.label_tag }}</th>
+                <td>{{ shipping_address.email }}</td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="id_{{ billing_shipping_form.shipping_method.html_name }}">Способ доставки:</label>
+                </th>
+                <td>{{ billing_shipping_form.shipping_method }}</td>
+            </tr>
+            <tr>
+                <th>{{ shipping_address.address.label_tag }}</th>
+                <td>{{ shipping_address.address }}</td>
+            </tr>
+            <tr>
+                <th>&nbsp;</th>
+                <td>&nbsp;</td>
+            </tr>
+
+            <tr>
+                <th>
+{#                    {{ orderextrainfo_form.text.label_tag }}#}
+                    <label for="id_{{ orderextrainfo_form.text.html_name }}">Комментарий к заказу:</label>
+                </th>
+                <td>{{ orderextrainfo_form.text }}</td>
+            </tr>
+            <tr>
+                <th>&nbsp;</th>
+                <td>
+                    <input type="hidden" name="{{ billing_shipping_form.payment_method.html_name }}" value="pay-with-cash"/>
+                    <button type="submit" class="checkout-link">Завершить оформление заказа</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+{% endblock %}

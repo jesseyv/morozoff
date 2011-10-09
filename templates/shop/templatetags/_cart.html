@@ -1,0 +1,14 @@
+<h2>Ваша корзина</h2>
+<p>
+    {% if cart.total_quantity %}
+    количество товаров: {{ cart.total_quantity }}<br/>
+    на сумму: {{ cart.total_price|floatformat }} руб.
+    {% else %}
+    Ваша корзина пуста
+    {% endif %}
+</p>
+{% if cart.total_quantity %}
+    <a class="go" href="{% url cart %}">Оформить заказ</a>
+{% else %}
+    <a class="go" href="/kat.html">Выбрать пуховик</a>
+{% endif %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h1>Элитные пуховики со склада в Москве</h1>
+    <div class="featured">
+    {% for product in object_list %}
+        {% include 'snippets/product.html' %}
+    {% endfor %}
+    </div>
+{% endblock %}

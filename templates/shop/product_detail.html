@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load thumbnail banners %}
+
+{% block title %}
+    купить пуховик в москве
+{% endblock %}
+
+{% block meta-kw %}{{ object.meta_keywords }}{% endblock %}
+{% block meta-desc %}{{ object.meta_description }}{% endblock %}
+
+{% block body %}
+    {% with object as product %}
+    <h1>{{ object.get_name }}</h1>
+    <div class="product-detail">
+    <div class="images">
+        {% for image in object.images_ordered %}
+            {% if not forloop.counter0 %}
+                {% thumbnail image.src "132x200" crop="center" as im %}
+                    <a rel="prettyPhoto[pp_gal]" href="{{ image.url }}" title="">
+                        <img alt="{{ image.alt }}" src="{{ im.url }}" />
+                    </a>
+                {% endthumbnail %}
+            {% else %}
+                {% thumbnail image.src "50x50" crop="center" as im %}
+                    <a rel="prettyPhoto[pp_gal]" href="{{ image.url }}" title="">
+                        <img alt="{{ image.alt }}" src="{{ im.url }}" class="icon"/>
+                    </a>
+                {% endthumbnail %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="description">
+    {% autoescape off %}
+        {{ object.description }}
+        <div class="clearfix"></div>
+        {% include 'snippets/price.html' %}
+{#        {% include 'snippets/product_discount.html' %}#}
+{#        <div class="leftflated">{% banner "discount" %}</div>#}
+        <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="button" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,lj,friendfeed,moikrug"></div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+    <div>{{ object.long_text }}</div>
+    {% endautoescape %}
+    {% endwith %}
+</div>
+{% endblock %}

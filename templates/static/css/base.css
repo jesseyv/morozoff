@@ -1,0 +1,377 @@
+/* global reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	padding: 0;
+	border: 0;
+}
+html, body
+{
+	height:100%;
+	min-height: 100%;
+	max-height: 100%;
+}
+
+body{
+	margin:0;
+	min-width:980px;
+	font:12px/18px Verdana, Tahoma, sans-serif;
+	color:#05022e;
+    overflow-y: scroll;
+}
+
+a {color:black;}
+
+img {
+	vertical-align:top;
+	border-style:none;
+}
+
+ul {list-style: none;}
+
+.clearfix {clear: both;}
+
+.wrapper {
+    margin: 0 auto;
+    width: 960px;
+}
+
+A {text-decoration: underline;}
+
+A:hover {text-decoration: none;}
+
+.header {
+	height: 181px;
+	background: #fff;
+	position: relative;
+}
+
+.header .logo {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    cursor: pointer;
+}
+
+.header .orgname {
+    color: #05022e;
+    position: absolute;
+	left: 250px;
+	font-size: 1.5em;
+    cursor: pointer;
+}
+
+.header .slogan {
+	color: #05022e;
+	position: absolute;
+    top: 74px;
+	left: 440px;
+	font-size: 1.5em;
+    margin: 1em 0;
+    
+	}
+.phone {
+    position: absolute;
+	right: 10px;
+	bottom: -50px;
+	font-size: 2.0em;
+    color: #fff;
+	z-index: 1;
+}
+
+.nav {
+	padding: 0;
+	height: 34px; 
+	margin-bottom: 10px;
+	background: #779BBF url(images/nav-bg-blue.gif) repeat-x scroll left top;
+	position: relative;
+}
+
+.nav ul {
+	list-style-image:none; 
+	list-style-position:outside; 
+	list-style-type:none; 
+	margin:0 10px; 
+	padding:6px 0 0;
+}
+
+.nav li {
+	float:left;
+	margin:0 1px; 
+	padding: 0 0 0 4px ;
+	background:transparent url(images/nav-white-left.gif) no-repeat scroll left top;
+}
+
+.nav li span {
+	display:block; 
+	float:left; 
+	padding-right:4px; 
+	background: transparent url(images/nav-white-right.gif) no-repeat scroll right top
+}
+
+.nav li a,
+.nav li b {
+	display:block;
+	float:left; 
+	font-family: Arial,Helvetica,sans-serif; 
+	text-align:center; 
+	border:0 none !important; 
+	font-size:12px; 
+	font-weight:bold; 
+	letter-spacing:0.002em; 
+	padding:4px 8px 5px;
+	color:#5B5858;
+	background: transparent url(images/nav-white-bg.gif) repeat-x scroll left top;
+	text-decoration: none;
+}
+
+.nav li b {padding-bottom:6px;}
+
+.nav li a:hover {color: #767772;}
+
+.nav .lb, .nav .rb {
+	display: block; 
+	font-size:1px; 
+	height:3px; 
+	width:3px; 
+	position:absolute; 
+	bottom:0; 
+	background: transparent url(images/nav-blueBot-left.gif) no-repeat scroll left bottom
+	}
+.nav .lb {left:0;}
+
+.nav .rb {
+	background:transparent url(images/nav-blueBot-right.gif) no-repeat scroll right bottom;
+	right: 0;
+}
+
+.mider {
+    width: 940px;
+    padding: 0 0 60px;
+}
+
+.rightside {
+    float: right;
+    width: 160px;
+    text-align:center;
+	padding-top: 20px;
+}
+
+.rightside h2 {
+    font-size:15px;
+    text-decoration:underline;
+}
+
+.rightside .go {
+    background: url(images/kat.png) center top no-repeat;
+    display: block;
+    padding-top: 80px;
+    font-size: 16px;
+    color:black;
+}
+
+.content {
+	position:relative; top:10px;
+    float: left;
+    width: 720px;
+}
+
+.content .featured {
+    float:left;
+}
+
+.content .featured .brief {
+	top: 5px;
+    float:left;
+    width:350px;
+    height:235px;
+	color: #000;
+    background: url(images/rama.png) no-repeat;
+    position: relative;
+    margin: 0 10px 10px 0;
+}
+
+.brief .title {
+    position: absolute;
+    margin-left: 155px; 
+	top: 5px;
+        color: #333;
+    
+    font-weight: normal;
+    font-size: 1.4em;
+ }
+
+.brief .image {
+    padding-left: 15px;
+	padding-top: 20px;
+    float:left;
+    width:99px;
+    height: 150px;
+    cursor: pointer;
+}
+
+.brief .description p {
+    margin: 0;
+}
+
+.brief .description {
+    float: left;
+    width:100px;
+    position: absolute;
+    margin-left: 160px;
+	top: 45px;
+}
+
+.brief  .price {
+    position: absolute;
+    left: 160px;
+	bottom: 17px;
+    font-size: 20px;
+}
+
+.price {
+    color: #44678e;
+    font-weight: bold;
+    text-align: center;
+}
+ 
+.brief .buy {
+	position: absolute;
+    bottom: 15px;
+    text-align: right;
+    right: 15px;
+}
+
+.content .text {
+    padding-top: 15px;
+    color: #666;
+    font-size: 1.1em;
+}
+
+.footer {
+    top: 15px;
+	padding: 5px;
+    height: 50px;
+    width: 100%;
+    position: relative;
+}
+.footer p {
+    margin: 0;
+}
+
+.footer .madein {
+    position: absolute;
+    right: 0;
+    top: 12px;
+}
+.footer .copy {
+    position: absolute;
+    left: 0;
+    top: 12px;
+}
+
+.notice {
+    border: 1px solid blue;
+    background-color: #add8e6;
+    color: #000000;
+    padding: 15px;
+}
+
+.images, .images img {float: left;}
+
+.images {
+    width: 150px;
+    margin-right: 20px;
+}
+
+.images .icon {margin-top: 10px; }
+
+.product-detail .description {
+    float: left;
+    width: 380px;
+}
+
+.product-detail .description p {
+    margin: 0;
+}
+
+.product-detail .price {
+    float: left;
+    padding: 20px;
+    text-align: center;
+}
+
+th {text-align: left; width: 150px;}
+
+.product-parameters th {width: 250px;}
+
+h1 {
+    font-size: 1.5em;
+    margin: 1em 0;
+    color: #333;
+}
+
+h2 {
+    font-size: 1.2em;
+    margin-bottom: 0;
+    color: #333;
+	
+}
+
+h2 a {color: #333;}
+
+.margin-leftside {
+    float: left;
+    width: 200px;
+}
+
+textarea {height: 70px;}
+
+#id_ship_name,
+#id_ship_email,
+#id_ship_phone,
+textarea {width: 350px;}
+
+.price_from {
+    color: red;
+    font-size: 0.9em;
+}
+
+.add-info {padding: 10px; color: #3399ff;}
+
+.leftflated {float: left;}
+
+.cart {padding-top: 10px;}
+
+.cart .nonzero-quantity {font-size: 1.1em;}
+.cart .zero-quantity {color: #666;}
+.cart input[type=text] {width: 50px;}
+.cart .nonzero-quantity .product-name-cell {font-weight: bold;}
+.cart .summary-cell {width: 110px;}
+.cart .quantity-cell {width: 105px;}
+.cart .unit-price-cell {width: 90px;}
+.cart .product-name-cell {width: 300px;}
+
+.cart .order-item td,
+.cart .order-item th {
+    border-top: 1px solid #ccc;
+    padding: 3px 0;
+}
+.checkout-link {
+    font-size: 2em;
+    line-height: 2em;
+    color: #a52a2a;
+    cursor: pointer;
+}
+
+.yashare-auto-init {float: left;}
