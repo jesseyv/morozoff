@@ -7,7 +7,6 @@ INSTALLED_APPS = INSTALLED_APPS + [
     'sorl.thumbnail',
     'polymorphic',
     'shop',
-#    'shop_simplevariations',
     # useful 3rd party apps
     'south',
     'sitetree',
@@ -17,7 +16,6 @@ INSTALLED_APPS = INSTALLED_APPS + [
     'apps.common',
     'apps.customshop',
     'apps.customshop.address',
-#    'apps.customshop.cart',
     'apps.articles',
     'apps.banners',
 ]
@@ -27,10 +25,6 @@ SHOP_SHIPPING_BACKENDS = [
 ]
 SHOP_PAYMENT_BACKENDS = [
     'apps.customshop.payments.backends.pay_with_cash.PayWithCashBackend'
-]
-
-SHOP_CART_MODIFIERS = [
-    'shop_simplevariations.cart_modifier.ProductOptionsModifier',
 ]
 
 SHOP_ADDRESS_MODEL = 'apps.customshop.address.models.Address'
@@ -44,7 +38,6 @@ TINYMCE_DEFAULT_CONFIG = {
     'custom_undo_redo_levels': 10,
 }
 
-#SHOP_CART_MODEL = 'apps.customshop.cart.models.Cart'
 
 TEMPLATE_DEBUG = DEBUG
 

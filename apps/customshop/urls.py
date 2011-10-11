@@ -1,6 +1,7 @@
 #-*- coding: utf-8 -*-
 from django.conf.urls.defaults import patterns, include, url
 from django.views.generic import ListView
+from shop.views.cart import CartDetails, CartItemDetail
 from shop.views.checkout import ThankYouView, ShippingBackendRedirectView,\
     PaymentBackendRedirectView
 from shop.views.order import OrderListView, OrderDetailView
@@ -22,6 +23,19 @@ urlpatterns = patterns('',
         ),
     (r'^pay/', include('shop.payment.urls')),
     (r'^ship/', include('shop.shipping.urls')),
+
+    # Cart
+    url(r'^cart/delete/$', CartDetails.as_view(action='delete'), # DELETE
+        name='cart_delete'),
+    url('^cart/item/$', CartDetails.as_view(action='post'), # POST
+        name='cart_item_add' ),
+    url(r'^cart/$', CartDetails.as_view(), name='cart'), # GET
+    url(r'^cart/update/$', CartDetails.as_view(action='put'),
+        name='cart_update'),
+
+    # CartItems
+    url('^cart/item/(?P<id>[0-9A-Za-z-_.//]+)$', CartItemDetail.as_view(),
+        name='cart_item' ),
 
     # Checkout
     url(r'^checkout/$', MyCheckoutSelectionView.as_view(),

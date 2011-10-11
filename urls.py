@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     (r'^tinymce/', include('tinymce.urls')),
 #    (r'^feedback/', include('feedback.urls')),
 #    url(r'^', include('apps.articles.urls')),
-    (r'^cart/', include('shop_simplevariations.urls')),
+#    (r'^cart/', include('shop_simplevariations.urls')),
     (r'^', include('apps.customshop.urls')),
 )
 

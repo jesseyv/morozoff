@@ -35,9 +35,10 @@ class MyCheckoutSelectionView(CheckoutSelectionView):
                 self.request.session['shipping_backend'] = (
                     billingshipping_form.cleaned_data['shipping_method'])
                 orderextrainfo_form = OrderExtraInfoForm(self.request.POST)
-                orderextrainfo = orderextrainfo_form.save(commit=False)
-                orderextrainfo.order = order
-                orderextrainfo.save()
+                if orderextrainfo_form.is_valid():
+                    orderextrainfo = orderextrainfo_form.save(commit=False)
+                    orderextrainfo.order = order
+                    orderextrainfo.save()
                 payment_instructions_email_notification(
                     order=order,
                     address=shipping_address,
