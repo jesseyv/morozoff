@@ -63,6 +63,10 @@ if DEBUG:
 
     STATICFILES_DIRS += (os.path.join(PROJECT_DIR, 'media'),)
 else :
+    FILES_URL = 'http://files.savvamorozoff.com'
+    MEDIA_URL = FILES_URL + MEDIA_URL
+    STATIC_URL = FILES_URL + STATIC_URL
+
     TEMPLATE_LOADERS = (
         ('django.template.loaders.cached.Loader', TEMPLATE_LOADERS),
     )
