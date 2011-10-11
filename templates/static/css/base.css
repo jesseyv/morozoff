@@ -66,7 +66,7 @@ A:hover {text-decoration: none;}
 .header .orgname {
     color: #05022e;
     position: absolute;
-	left: 250px;
+	left: 150px;
 	font-size: 1.5em;
     cursor: pointer;
 }
@@ -74,8 +74,8 @@ A:hover {text-decoration: none;}
 .header .slogan {
 	color: #05022e;
 	position: absolute;
-    top: 74px;
-	left: 440px;
+    top: 6px;
+	left: 350px;
 	font-size: 1.5em;
     margin: 1em 0;
     
