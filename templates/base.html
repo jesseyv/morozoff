@@ -7,6 +7,8 @@
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/base.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/feedback.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/prettyPhoto.css" media="screen" />
+    {% block extrahead %}
+    {% endblock %}
 </head>
 <body>
     <div class="wrapper">
@@ -55,5 +57,6 @@
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.prettyPhoto.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/base.js"></script>
     <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
+    {% include 'snippets/yandex_metrika.html' %}
 </body>
 </html>
