@@ -1,0 +1,99 @@
+{% extends "new/base.html" %}
+{% load thumbnail %}
+
+{% block css %}
+    <link href="{{ STATIC_URL }}new/css/basket_style.css" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+
+    <form action="" method="POST">
+        {% csrf_token %}
+
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="forminfo">
+	  <tbody>
+      <tr>
+		<td height="50" style="font-size:14px; color:#aeadb5; vertical-align:middle; text-transform:uppercase;" valign="middle" align="left">Контактные данные</td>
+	  </tr>
+
+      {% if shipping_address.errors %}
+        <tr>
+            <td style="color: #ED1B2C;">
+                Заполните все обязательные поля
+            </td>
+        </tr>
+      {% endif %}
+
+	  <tr>
+		<td class="form">
+
+			<table width="100%">
+				<tbody>
+                <tr>
+                    <td colspan="2" style="font-size:14px; color:#aeadb5; vertical-align:middle; text-transform:uppercase;" valign="middle" align="left">
+
+                    </td>
+                </tr>
+				<tr>
+                    <td>
+
+                    </td>
+                    <td style="" valign="middle" align="left">
+						<br>
+										<br>
+				</td>
+                </tr>
+
+				<tr>
+                    <td class="lable">{{ shipping_address.name.label_tag }} <span style="color: #ED1B2C;">*</span></td>
+                    <td class="input">
+                        {{ shipping_address.name }}
+                    </td>
+                </tr>
+				<tr>
+                    <td class="lable">{{ shipping_address.phone.label_tag }} <span style="color: #ED1B2C;">*</span></td>
+                    <td class="input">
+                        {{ shipping_address.phone }}
+                    </td>
+                </tr>
+				<tr>
+                    <td class="lable">{{ shipping_address.email.label_tag }}</td>
+                    <td class="input">
+                        {{ shipping_address.email }}
+                    </td>
+                </tr>
+				<tr>
+                    <td class="lable">Способ доставки:</td>
+                    <td>{{ billing_shipping_form.shipping_method }}</td>
+                </tr>
+				<tr>
+                    <td class="lable">{{ shipping_address.address.label_tag }}</td>
+				    <td class="input">
+                        {{ shipping_address.address }}
+				    </td>
+                </tr>
+				<tr>
+                    <td class="lable">Комментарий к заказу:</td>
+                    <td class="input ">
+                        {{ orderextrainfo_form.text }}
+                    </td>
+                </tr>
+				<tr>
+                    <td>
+                    <input type="hidden" name="{{ billing_shipping_form.payment_method.html_name }}" value="pay-with-cash"/>
+                    <input type="submit" class="checkout-link" value="Завершить оформление заказа"></button>
+                </td>
+                </tr>
+{#				<tr><td class="lable">Комментарий</td><td class="input"><textarea name="comment" rows="5"></textarea></td></tr>#}
+			</tbody>
+            </table>
+
+			<br>
+			<br>
+			<br>
+		</td>
+	  </tr>
+	</tbody></table>
+	</form>
+
+{% endblock %}

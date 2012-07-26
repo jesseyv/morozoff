@@ -1,8 +1,0 @@
-<div class="price">
-    <div>{{ object.unit_price }}р</div>
-    <form method="post" action="{% url cart %}">{% csrf_token %}
-    <input type="hidden" name="add_item_id" value="{{object.id}}">
-    <input type="hidden" name="add_item_quantity" value="1">
-    <input type="image" src="{{ STATIC_URL }}images/to_buy.jpg">
-    </form>
-</div>

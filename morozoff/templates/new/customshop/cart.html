@@ -1,0 +1,116 @@
+{% extends "new/base.html" %}
+{% load thumbnail %}
+
+{% block css %}
+    <link href="{{ STATIC_URL }}new/css/basket_style.css" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+    <div style="font-size:16px; color:#414141; text-transform:uppercase;">Моя корзина</div>
+    {% if cart_items %}
+        <form method="post" action="{% url cart_update %}">
+            {% csrf_token %}
+            {{ formset.management_form }}
+
+
+{#        {{ formset }}#}
+
+
+            <table cellpadding="0" cellspacing="0" border="0" class="itemtable">
+                <tbody><tr>
+                    <td class="hitem name">Наименование товара</td>
+                    <td class="hitem number">Количество</td>
+                    <td class="hitem price">Цена</td>
+{#                    <td class="hitem discount">Скидка</td>#}
+                    <td class="hitem amount">Сумма</td>
+                    <td class="hitem remove">&nbsp;</td>
+                </tr>
+            <form method="POST" name="basket_items"></form>
+                {% for item in cart_items %}
+                            <tr>
+                        <td class="item name">
+                            <table width="100%">
+                                    <tbody>
+                                    <tr>
+                                        <td class="itempic" rowspan="4">
+                                            {% with item.product.images_ordered.0 as image %}
+                                                {% thumbnail image.src "96x96" crop="center" as im %}
+                                                    <a rel="prettyPhoto[pp_gal_{{ item.pk }}]" href="{{ image.url }}" title="">
+                                                        <img alt="{{ image.alt }}" src="{{ im.url }}" />
+                                                    </a>
+                                                {% endthumbnail %}
+                                            {% endwith %}
+                                        </td>
+                                        <td class="itemname">{{ item.product.get_name }}</td>
+                                    </tr>
+                                    <tr>
+{#                                        <td class="itempart">Артикул: 12893</td>#}
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td class="item number">
+                            <input type="text" name="form-{{ forloop.counter0 }}-quantity" id="id_form-{{ forloop.counter0 }}-quantity" value="{{ item.quantity }}"> шт.
+                            <input type="hidden" name="form-{{ forloop.counter0 }}-id" value="{{ item.quantity }}" id="id_form-{{ forloop.counter0 }}-id">
+                        </td>
+                        <td class="item price">{{item.product.get_price}} р.</td>
+{#                        <td class="item discount">0 р.</td>#}
+                        <td class="item amount">{{ item.line_subtotal }} р.</td>
+{#                        <td class="item remove">#}
+{#                            <a href="/personal/order.php?DELETE_ITEM=6639" title="">#}
+{#                                <img src="http://test.love-sl.ru/shoprec/image/remove_X.jpg" title="" alt="" width="9" height="9" border="0">#}
+{#                            </a>#}
+{#                        </td>#}
+                    </tr>
+                {% endfor %}
+
+                </tbody></table>
+
+            <input type="submit" value="Пересчитать корзину"/>
+        </form>
+
+        <form action="{% url cart_delete %}" method="post">
+      {% csrf_token %}
+      <p><input type="submit" value="Очистить корзину"/></p>
+    </form>
+
+        <form action="" method="POST">
+
+	<input type="hidden" name="phoneDiscount" value="0">
+
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="forminfo">
+	  <tbody><tr>
+{#		<td height="50" style="font-size:14px; color:#aeadb5; vertical-align:middle; text-transform:uppercase;" valign="middle" align="left">Контактные данные</td>#}
+{#		<td class="deliveryinfo" width="360"><br>Доставка: БЕСПЛАТНО (курьером по Москве)</td>#}
+	  </tr>
+	  <tr>
+{#		БЕСПЛАТНО#}
+		<td class="forminfo" valign="top">
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		  <tbody><tr>
+			<td align="left" style="font-size:14px;" valign="middle" height="30"></td><td align="right" style="font-size:14px;"></td>
+		  </tr>
+		  		  <tr>
+			<td align="left" style="border-bottom:1px dotted #FF0000; font-size:14px; font-weight:bold; color:#F00;">ИТОГО:</td><td align="right" style="border-bottom:1px dotted #FF0000; font-size:14px; font-weight:bold; color:#F00;"><input type="hidden" name="orderPrice" value="4990">{{cart.total_price}} р.</td>
+		  </tr>
+		  <tr>
+			<td colspan="2" height="90" valign="middle" align="center" class="submit">
+            <input type="hidden" value="4990" name="prderPrice">
+                <a class="checkout-link" href="{% url checkout_selection %}">Оформить заказ</a>
+            </td>
+		  </tr>
+		  <tr>
+            </tr>
+		</tbody></table>
+		<br>
+
+		</td>
+	  </tr>
+	</tbody></table>
+	</form>
+
+    {% else %}
+        <h3>Корзина пуста</h3>
+    {% endif %}
+{% endblock %}
