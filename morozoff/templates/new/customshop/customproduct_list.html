@@ -97,23 +97,23 @@
                   </td>
 
                   <td id="jew1" class="product popRightSmall">
-                    {% if list.1 %}
-                    <div class="innerContainer" id="{{ list.1.slug }}">
+                    {% if list.11 %}
+                    <div class="innerContainer" id="{{ list.11.slug }}">
                       <div class="show" style="display: none;">
                         <div class="decription">
                           <div class="seoDetailText" style="display: block;">
-                            {{ list.1.get_name }}
+                            {{ list.11.get_name }}
                             <br>
-                            {{ list.1.description|safe }}
+                            {{ list.11.description|safe }}
                           </div>
 
                           <div class="showPrice">
-                            {{ list.1.unit_price }} р.
+                            {{ list.11.unit_price }} р.
                           </div>
 
                             <div>
                               <form method="post" action="{% url cart %}">{% csrf_token %}
-                                    <input type="hidden" name="add_item_id" value="{{ list.1.pk }}">
+                                    <input type="hidden" name="add_item_id" value="{{ list.11.pk }}">
                                     <input type="hidden" name="add_item_quantity" value="1">
                                     <input type="image" src="{{ STATIC_URL }}images/to_buy.jpg">
                                 </form>
@@ -124,10 +124,10 @@
                       <div class="contain" style="z-index: 50; border-color: rgb(239, 237, 238);">
                         <div class="photo">
 
-                              {% if list.1.logo %}
-                                <a href="{% url product_detail list.1.slug %}">
-                                  {% thumbnail list.1.logo.src "140x140" crop="center" as im %}
-                                  <img src="{{ im.url }}" alt="{{ list.1.logo.alt }}" style="display: inline;">
+                              {% if list.11.logo %}
+                                <a href="{% url product_detail list.11.slug %}">
+                                  {% thumbnail list.11.logo.src "140x140" crop="center" as im %}
+                                  <img src="{{ im.url }}" alt="{{ list.11.logo.alt }}" style="display: inline;">
                                   {% endthumbnail %}
                                 </a>
                               {% endif %}
@@ -137,7 +137,7 @@
                         <div class="pricesContainer withOldPriceContainer">
                           <div class="price">
                             <img src="{{ STATIC_URL }}new/img/korzina_.png" border="0" width="14" height="10" class="basket">
-                            {{ list.1.unit_price }} р.
+                            {{ list.11.unit_price }} р.
                           </div>
                         </div>
                       </div>
