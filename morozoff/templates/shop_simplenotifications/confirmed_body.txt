@@ -1,0 +1,10 @@
+Заказ пуховиков
+
+{% for item in order.items.all %}
+    {{ item.product_name }} {{ item.quantity }}
+{% endfor %}
+
+Указанные контактные данные:
+{{ order.shipping_address_text }}
+
+Общая сумма заказа с учетом доставки равна {{ order.order_total }} рублей

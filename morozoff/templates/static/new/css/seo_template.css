@@ -1,0 +1,200 @@
+#seoListContainer {
+	margin-top: 13px;
+
+}
+#seoListContainer table {
+	border-collapse: collapse;
+}
+	#seoListContainer td {
+		border: 10px solid #f6f6f6;
+		padding: 0;
+	}
+		#seoListContainer .innerContainer {
+			overflow: hidden;
+		}
+		#seoListContainer .show{
+			display: none;
+		}
+		#seoListContainer .bigJewCell {
+		}
+		#seoListContainer .bigJewCell .innerContainer {
+			width: 290px;
+			height: 290px;
+		}
+		#seoListContainer .rightBig {
+			text-align: right;
+		}
+			#seoListContainer .rightBig .decription {
+				margin-left: 85px;
+			}
+		#seoListContainer .twoItems .photo {
+			overflow: hidden;
+			height: 140px;
+		}
+		
+		#seoListContainer .bigJewCell .photo {
+			overflow: hidden;
+			height: 290px;
+		}
+		#seoListContainer .bigJewCell .photo img{
+			width: 200px;
+			margin-top: 45px;
+			margin-left: 45px;
+		}
+
+		#seoListContainer .bigJewCell .popleft .photo img {
+			margin-right: 50px!important;
+		}
+		#seoListContainer .bigJewCell .photo img:hover {
+			width: 400px;
+			margin-left: -50px;
+			margin-top: -50px;
+		}
+		#seoListContainer .twoItems .photo img{
+			width: 110px;
+			margin-top: 15px;
+			margin-left: 15px;
+		}
+		#seoListContainer .twoItems .photo img:hover {
+			width: 140px;
+			margin: 0;
+		}
+		#seoListContainer td.twoItems {
+			
+			
+		}
+			#seoListContainer .twoItems .innerContainer {
+				width: 139px;
+				height: 140px;
+			}
+			#seoListContainer .twoItems .first {
+				border-bottom: 10px solid #f6f6f6;
+			}
+			
+		#seoListContainer .innerContainer .price {
+			position: absolute;
+			color: #7b7b7b;
+			width: 70px;
+			text-align: right;
+		}
+			#seoListContainer .showPrice {
+				color: black;
+				font-size: 20px;
+			}
+		#seoListContainer .twoItems .innerContainer .price {
+			margin-left: 65px;
+			margin-top: -20px;
+		}
+		#seoListContainer .bigJewCell .innerContainer .price {
+			margin-left: 215px;
+			margin-top: -25px;
+		}
+		#seoListContainer .textContainer .innerContainer {
+			width: 590px;
+			color: #7b7b7b;
+			font-size: 13px;
+		}
+		#seoListContainer .textContainer {
+
+			
+		}
+		#seoListContainer .textContainer .picture {
+			float: left;
+			width: 226px;
+		}
+			#seoListContainer .textContainer .picture img {
+				width: 226px;
+				height: 290px;
+			}
+		#seoListContainer .textContainer .textSeo {
+			
+			text-align: justify;
+			height: 285px;
+			padding: auto;
+			display: table-cell;
+			vertical-align: middle;
+			width: 350px;
+			color: #888888;
+		}
+		*:first-child+html #seoListContainer .textContainer .textSeo {
+			position: relative;
+			top: 50%;
+			margin-top: -23%;
+		}
+		
+	#bottomLine td {
+		border-top: 0;
+	}
+
+	#seoListContainer  .show {
+		position: absolute;
+		display: none;
+		background-color: #f0f0f0;
+		border: 1px solid #cecece;
+		z-index: 100;
+		filter:progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+		-moz-opacity: 0.9; 
+		-khtml-opacity: 0.9; 
+		opacity: 0.9;
+	}
+	#seoListContainer .contain {
+		position: relative;
+	}
+		#seoListContainer .withOldPriceContainer .oldPriceFirst{
+			margin-left: 102px;
+		}
+		#seoListContainer .bigJewCell .withOldPriceContainer .oldPriceFirst{
+			margin-left: 240px;
+		}
+	#seoListContainer .decription {
+		width: 200px;
+		padding: 10px;
+	}
+	
+	#seoListContainer .twoItems .decription {
+		width: 130px;
+		padding: 10px;
+	}
+	
+	#seoListContainer .empty .show{display: none;}
+	#seoListContainer .empty .contain{display: none;}
+	#seoListContainer .popright .show {height: 307px; width: 307px; padding-left: 300px;margin-top: -10px;margin-left: -10px;}
+	#seoListContainer .popleft .show {height: 307px; width: 307px; padding-right: 300px;margin-top: -10px;margin-left: -310px;}
+	
+	
+	*:first-child+html #seoListContainer .popleft .show  {
+		margin-left: -600px;
+	}
+	* html #seoListContainer .popleft .show{
+		margin-left: -600px;
+	}
+	
+	*:first-child+html #seoListContainer .popleft .price  {
+		margin-left: -80px;
+		margin-top: -20px;
+	}
+	* html #seoListContainer .popleft .price  {
+		margin-left: -80px!important;
+	}
+	
+	#seoListContainer .poptop .show {width: 160px;height: 150px; padding-bottom: 158px; margin-top: -160px; margin-left: -10px;}
+	#seoListContainer .popbottom .show {width: 160px;height: 150px; padding-top: 158px; margin-top: -10px; margin-left: -10px;}
+	
+	
+#catalogAjax {
+	display: none;
+}
+.noShowSeoPage #catalogAjax {
+	display: block;
+}
+.noShowSeoPage #seoListContainer {
+	display: none;
+}
+
+.rightArrowSeo {
+	height: 610px!important;
+	margin-top: -610px!important;
+}
+.rightArrowSeo  img{
+	margin-top: 300px!important;
+}

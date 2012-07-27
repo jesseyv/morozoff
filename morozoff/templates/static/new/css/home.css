@@ -1,0 +1,182 @@
+#mainBannerBlock {
+	
+
+}
+	#shBlockBanner {
+		height: 550px;
+		padding-top: 60px;
+		width: 907px;
+		background-color: #ec1d2c;
+	}
+	
+	#shBlockBanner img {
+		
+	}
+	
+	#loveBlockBanner {
+		height: 488px;
+		width: 907px;
+		background: url('img/redBg.png');
+	}
+	#saleBlockBanner {
+		height: 488px;
+		width: 907px;
+		background-image: url('img/persentBg.jpg');
+	}
+	
+	#silverBlockBanner {
+		height: 452px;
+		width: 907px;
+		background: url('img/redBg.png');
+	}
+#bannerText {
+	position: absolute;
+	margin-left: 550px;
+	margin-top: 70px;
+	z-index: 5000;
+}
+#bannerText p {
+	color: #808080;
+	font-size: 15px;
+	margin: 0;
+	padding: 0;
+}
+	.bannerHeader {
+		font-size: 22px;
+		font-weight: normal;
+		color: #808080;
+		
+	}
+
+#switcher {
+	position: absolute;
+	margin-left: 420px;
+	margin-top: 380px;
+	z-index: 10000;
+}
+#switcher  img {
+	margin: 0 5px;
+	width: 15px;
+	cursor: pointer;
+}
+
+#bannerMenuContainer {
+	float: left;
+	width: 167px;
+	height: 410px;
+	overflow: hidden;
+	position: absolute;
+}
+	#fashionBrilliants {
+
+		margin-left: -3px;
+		margin-top: 30px;
+		height: 25px;
+		display: block;
+		position: absolute;
+		z-index: 200px;
+	}
+
+	#bannerMenu {
+		padding: 0;
+		display: block;
+		margin-top: 138px;
+	}
+	
+	@media all and (-webkit-min-device-pixel-ratio:10000), 
+	not all and ( -webkit-min-device-pixel-ratio : 0 ) { 
+		#bannerMenu {margin-top: 83px;}
+	}
+	
+	*:first-child+html #bannerMenuContainer {
+		margin-top: 140px;
+		margin-left: -40px;
+		width: 200px;
+	}
+	* html #bannerMenuContainer {
+		margin-top: 140px;
+		margin-left: -40px;
+		width: 200px;
+		height: 270px;
+	}
+	
+		*:first-child+html #fashionBrilliants {
+			margin-left: 0px;
+			margin-top: -110px;
+		}
+		* html #fashionBrilliants {
+			margin-left: 0px;
+			margin-top: -110px;
+		}
+		
+		
+		#bannerMenu li {
+			list-style: none;
+			line-height: 13px;
+		}
+		#bannerMenu a {
+			text-decoration: none;
+		}
+		
+#bannerMenuContainerWhite {
+	position: absolute;
+	color: #ffffff;
+	margin-left: 100px;
+	margin-top: 105px;
+}
+	#homeHeaderWhite {
+		color: #ffffff;
+	}
+	#bannerMenuWhite {
+		padding: 0;
+		display: block;
+		margin-top:40px;
+	}
+	*:first-child+html #bannerMenuWhite {
+		margin-left: -40px;
+	}
+		#bannerMenuWhite  li{
+			list-style: none;
+			line-height: 16px;
+			
+		}
+		#bannerMenuWhite  li a {
+			text-decoration: none;
+			color: #ffffff;
+			font-size: 12px;
+			font-weight: bold;
+		}
+		#bannerMenuWhite  li a:hover {
+			text-decoration: underline;
+		}
+
+		
+#swfContainer {
+	margin-right: 110px;
+	margin-top: 90px;
+	overflow: hidden;
+	float: right;
+}
+	#swfContainer object {
+		margin-top: -1px;
+		margin-left: -1px;
+	}
+	
+#mainTextContainer {
+	padding-top: 10px;
+}
+
+	#mainTextContainer  h1{
+		font-size: 14px;
+		font-weight: normal;
+		color: #808080;
+	}
+	
+	#mainTextContainer p {
+		font-size: 12px;
+		color: #808080;
+	}
+	
+#topMenuContainer {
+	border: 0!important;
+}

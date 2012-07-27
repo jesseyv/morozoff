@@ -1,0 +1,22 @@
+{#<h2>Ваша корзина</h2>#}
+{#<p>#}
+{#    {% if cart.total_quantity %}#}
+{#    количество товаров: {{ cart.total_quantity }}<br/>#}
+{#    на сумму: {{ cart.total_price|floatformat }} руб.#}
+{#    {% else %}#}
+{#    Ваша корзина пуста#}
+{#    {% endif %}#}
+{#</p>#}
+{#{% if cart.total_quantity %}#}
+{#    <a class="go" href="{% url cart %}">Оформить заказ</a>#}
+{#{% else %}#}
+{#    <a class="go" href="/">Выбрать пуховик</a>#}
+{#{% endif %}#}
+
+<a class='menuItem basketCountBasketString'  id='menuIdbasket' href='{% url cart %}'>
+    {% if cart.total_quantity %}
+        КОРЗИНА(<span id='basketPriceValueString'>{{ cart.total_quantity }}</span>)
+    {% else %}
+        КОРЗИНА
+    {% endif %}
+</a>
