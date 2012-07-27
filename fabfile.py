@@ -62,15 +62,16 @@ def deploy_init():
                     print(green('Installing required packets'))
                     _sudo('pip install -r requirements.txt')
 
-                with prefix('workon {}'.format(PROJECT_REPO_NAME)):
-                    with cd('{0}'.format(PROJECT_REPO_NAME)):
-                        print(green('Syncing DB'))
-                        _sudo('python manage.py syncdb --noinput')
+                    print(green('Syncing DB'))
+                    _sudo('python manage.py syncdb --noinput')
+                    
+                    print(green('Migrating DB'))
+                    _sudo('python manage.py migrate --noinput')
 
-                        print(green('Collecting static'))
-                        _sudo('python manage.py collectstatic --noinput')
+                    print(green('Collecting static'))
+                    _sudo('python manage.py collectstatic --noinput')
 
-                        #print(green('Installing fixtures'))
-                        #_sudo('python manage.py loaddata fixtures/*.json')
+                    #print(green('Installing fixtures'))
+                    #_sudo('python manage.py loaddata fixtures/*.json')
 
     enable_proj()
