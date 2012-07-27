@@ -11,19 +11,11 @@
 {% endblock %}
 
 {% block content %}
-{#    <script type="text/javascript">#}
-{#    var strParams = {"cat":"index","page_number":1,"sfirst":false,"catalog_page":"index"};#}
-{#    var seoPage = false;#}
-{#    var seoTemplate = false;#}
-{#    var seoPage = true;#}
-{#    seoTemplate = true;#}
-{##}
-{#    var jewsCount = 81;#}
-{##}
-{##}
-{#    var catalogPath = '/catalog/';#}
-{#    // alert(strParams.catalog_page);#}
-{#    </script>#}
+    <style>
+        .seoDetailText {
+            height: 160px;
+        }
+    </style>
 
     <script type="text/javascript">
 
@@ -63,7 +55,7 @@
                           <div class="seoDetailText" style="display: block;">
                             {{ list.0.get_name }}
                             <br>
-                            {{ list.0.description }}
+                            {{ list.0.description|safe }}
                           </div>
 
                           <div class="showPrice">
@@ -84,7 +76,7 @@
                         <div class="photo">
 
                               {% if list.0.logo %}
-                                <a href="{% url product_detail list.0.id %}">
+                                <a href="{% url product_detail list.0.slug %}">
                                   {% thumbnail list.0.logo.src "400x400" crop="center" as im %}
                                   <img src="{{ im.url }}" alt="{{ list.0.logo.alt }}" style="display: inline;">
                                   {% endthumbnail %}
@@ -105,14 +97,14 @@
                   </td>
 
                   <td id="jew1" class="product popRightSmall">
-                    {% if list.0 %}
+                    {% if list.1 %}
                     <div class="innerContainer" id="{{ list.1.slug }}">
                       <div class="show" style="display: none;">
                         <div class="decription">
                           <div class="seoDetailText" style="display: block;">
                             {{ list.1.get_name }}
                             <br>
-                            {{ list.1.description }}
+                            {{ list.1.description|safe }}
                           </div>
 
                           <div class="showPrice">
@@ -161,7 +153,7 @@
                           <div class="seoDetailText" style="display: block;">
                             {{ list.2.get_name }}
                             <br>
-                            {{ list.2.description }}
+                            {{ list.2.description|safe }}
                           </div>
 
                           <div class="showPrice">
@@ -211,7 +203,7 @@
                           <div class="seoDetailText" style="display: block;">
                             {{ list.3.get_name }}
                             <br>
-                            {{ list.3.description }}
+                            {{ list.3.description|safe }}
                           </div>
 
                           <div class="showPrice">
@@ -261,7 +253,7 @@
                           <div class="seoDetailText" style="display: block;">
                             {{ list.4.get_name }}
                             <br>
-                            {{ list.4.description }}
+                            {{ list.4.description|safe }}
                           </div>
 
                           <div class="showPrice">
@@ -312,7 +304,7 @@
                           <div class="seoDetailText" style="display: block;">
                             {{ list.5.get_name }}
                             <br>
-                            {{ list.5.description }}
+                            {{ list.5.description|safe }}
                           </div>
 
                           <div class="showPrice">
@@ -361,7 +353,7 @@
                           <div class="seoDetailText" style="display: block;">
                             {{ list.6.get_name }}
                             <br>
-                            {{ list.6.description }}
+                            {{ list.6.description|safe }}
                           </div>
 
                           <div class="showPrice">
@@ -410,7 +402,7 @@
                           <div class="seoDetailText" style="display: block;">
                             {{ list.1.get_name }}
                             <br>
-                            {{ list.1.description }}
+                            {{ list.1.description|safe }}
                           </div>
 
                           <div class="showPrice">
@@ -431,7 +423,7 @@
                         <div class="photo">
 
                               {% if list.1.logo %}
-                                <a href="{% url product_detail list.2.slug %}">
+                                <a href="{% url product_detail list.1.slug %}">
                                   {% thumbnail list.1.logo.src "400x400" crop="center" as im %}
                                   <img src="{{ im.url }}" alt="{{ list.7.logo.alt }}" style="display: inline;">
                                   {% endthumbnail %}
@@ -461,7 +453,7 @@
                           <div class="seoDetailText" style="display: block;">
                             {{ list.7.get_name }}
                             <br>
-                            {{ list.7.description }}
+                            {{ list.7.description|safe }}
                           </div>
 
                           <div class="showPrice">
@@ -510,7 +502,7 @@
                           <div class="seoDetailText" style="display: block;">
                             {{ list.8.get_name }}
                             <br>
-                            {{ list.8.description }}
+                            {{ list.8.description|safe }}
                           </div>
 
                           <div class="showPrice">
@@ -559,7 +551,7 @@
                           <div class="seoDetailText" style="display: block;">
                             {{ list.9.get_name }}
                             <br>
-                            {{ list.9.description }}
+                            {{ list.9.description|safe }}
                           </div>
 
                           <div class="showPrice">
@@ -608,7 +600,7 @@
                           <div class="seoDetailText" style="display: block;">
                             {{ list.10.get_name }}
                             <br>
-                            {{ list.10.description }}
+                            {{ list.10.description|safe }}
                           </div>
 
                           <div class="showPrice">

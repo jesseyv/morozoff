@@ -622,6 +622,9 @@ div.leftArrow {margin-left: -13px;margin-top: 260px;display: none;}*/
 	overflow: hidden;
 	line-height: 12px;
 }
+.seoDetailText p {
+    margin: 0px;
+}
 	.oldPrice {
 		text-decoration: line-through;
 		position: relative;
