@@ -90,8 +90,8 @@
                         </li>
                     </ul>
 
-                    <a class='menuItem' href='#'>УСЛОВИЯ ПРОДАЖИ</a>
-                    <a class='menuItem' href='#'>ПАРТНЕРАМ</a>
+                    <a class='menuItem' href='/terms/'>УСЛОВИЯ ПРОДАЖИ</a>
+                    <a class='menuItem' href='/partners/'>ПАРТНЕРАМ</a>
                     {% cart %}
                     <img src='{{ STATIC_URL }}new/img/spacer.gif' height='1' width='100%' />
                 </div>
@@ -101,9 +101,9 @@
                 {% block content %}
                 <div id='mainBannerBlock' style='background-color: #e60f0c;' >
                     <div  style='height: 612px;'>
-                        <a href='/catalog/collections.php' style='position: absolute; z-index: 100;'>
-                            <img src='{{ STATIC_URL }}new/img/main/fashion_brill.png' alt='' title='' style='position: absolute; margin-left: 100px; margin-top: 140px; width: 200px; ' />
-                        </a>
+{#                        <a href='/catalog/collections.php' style='position: absolute; z-index: 100;'>#}
+{#                            <img src='{{ STATIC_URL }}new/img/main/fashion_brill.png' alt='' title='' style='position: absolute; margin-left: 100px; margin-top: 140px; width: 200px; ' />#}
+{#                        </a>#}
                         <div id='bannerMenuContainerWhite' style='margin-top: 180px;  z-index: 100;'>
 
                             <br />
@@ -112,13 +112,13 @@
                                     <br/>
                                 </li>
                                 <li>
-                                    <a style='font-weight: normal;' href='/catalog/collections.php'>КОЛЛЕКЦИИ</a>
+                                    <a class='menuItem'  id='menuIdindex' href='{% url product_list %}'>КАТАЛОГ </a>
                                 </li>
                                 <li>
                                     <br/>
                                 </li>
                                 <li>
-                                    <a href='/catalog/chance.html' style='font-weight: normal;'>БРИЛЛИАНТОВЫЙ ШАНС</a>
+{#                                    <a href='/catalog/chance.html' style='font-weight: normal;'>БРИЛЛИАНТОВЫЙ ШАНС</a>#}
                                 </li>
                                 <li>
                                     <br/>
@@ -139,10 +139,10 @@
 
                                 <li><br/></li>
                                 <li>
-                                    <a href='#'><b>ЮВЕЛИРНЫЕ ГИПЕРМАРКЕТЫ</b></a>
+{#                                    <a href='#'><b>ЮВЕЛИРНЫЕ ГИПЕРМАРКЕТЫ</b></a>#}
                                 </li>
                                 <li>
-                                    <a href='/shops/locator.php'><b>ГДЕ КУПИТЬ</b></a>
+{#                                    <a href='/shops/locator.php'><b>ГДЕ КУПИТЬ</b></a>#}
                                 </li>
                             </ul>
                         </div>
@@ -241,7 +241,7 @@
 
                 <div id='copyBlock'>
                     <div id='copy' class='gBColor '>
-                    © 1995-2012 SUNLIGHT Brilliant
+                    © 2012 Savva Morozoff
                     </div>
 
                 </div>

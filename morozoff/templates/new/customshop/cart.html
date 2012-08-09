@@ -12,10 +12,6 @@
             {% csrf_token %}
             {{ formset.management_form }}
 
-
-{#        {{ formset }}#}
-
-
             <table cellpadding="0" cellspacing="0" border="0" class="itemtable">
                 <tbody><tr>
                     <td class="hitem name">Наименование товара</td>
@@ -23,14 +19,14 @@
                     <td class="hitem price">Цена</td>
 {#                    <td class="hitem discount">Скидка</td>#}
                     <td class="hitem amount">Сумма</td>
-                    <td class="hitem remove">&nbsp;</td>
+                    <td class="hitem remove">Удалить</td>
                 </tr>
             <form method="POST" name="basket_items"></form>
                 {% for item in cart_items %}
-                            <tr>
+                    <tr>
                         <td class="item name">
                             <table width="100%">
-                                    <tbody>
+                                <tbody>
                                     <tr>
                                         <td class="itempic" rowspan="4">
                                             {% with item.product.images_ordered.0 as image %}
@@ -56,6 +52,11 @@
                         <td class="item price">{{item.product.get_price}} р.</td>
 {#                        <td class="item discount">0 р.</td>#}
                         <td class="item amount">{{ item.line_subtotal }} р.</td>
+
+                        <td class="item number">
+                            <a href="{% url cart_delete_single item.id %}">Удалить</a>
+                        </td>
+
 {#                        <td class="item remove">#}
 {#                            <a href="/personal/order.php?DELETE_ITEM=6639" title="">#}
 {#                                <img src="http://test.love-sl.ru/shoprec/image/remove_X.jpg" title="" alt="" width="9" height="9" border="0">#}
@@ -70,21 +71,17 @@
         </form>
 
         <form action="{% url cart_delete %}" method="post">
-      {% csrf_token %}
-      <p><input type="submit" value="Очистить корзину"/></p>
-    </form>
+          {% csrf_token %}
+          <p><input type="submit" value="Очистить корзину"/></p>
+        </form>
 
-        <form action="" method="POST">
-
-	<input type="hidden" name="phoneDiscount" value="0">
 
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="forminfo">
-	  <tbody><tr>
-{#		<td height="50" style="font-size:14px; color:#aeadb5; vertical-align:middle; text-transform:uppercase;" valign="middle" align="left">Контактные данные</td>#}
-{#		<td class="deliveryinfo" width="360"><br>Доставка: БЕСПЛАТНО (курьером по Москве)</td>#}
-	  </tr>
+	  <tbody>
+      <tr>
+
+      </tr>
 	  <tr>
-{#		БЕСПЛАТНО#}
 		<td class="forminfo" valign="top">
 
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -108,7 +105,6 @@
 		</td>
 	  </tr>
 	</tbody></table>
-	</form>
 
     {% else %}
         <h3>Корзина пуста</h3>

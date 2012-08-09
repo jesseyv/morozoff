@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
+from django.views.generic import DeleteView
+from shop.models.defaults.cartitem import CartItem
 from shop.util.address import assign_address_to_request
 from shop.views.checkout import CheckoutSelectionView
 
@@ -53,3 +55,9 @@ class MyCheckoutSelectionView(CheckoutSelectionView):
         orderextrainfo_form = OrderExtraInfoForm()
         ctx.update({'orderextrainfo_form': orderextrainfo_form})
         return ctx
+
+
+class CartItemDeleteView(DeleteView):
+    model = CartItem
+
+    success_url = '/cart/'

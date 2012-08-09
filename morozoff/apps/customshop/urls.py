@@ -8,7 +8,7 @@ from shop.views.order import OrderListView, OrderDetailView
 from shop.views.product import ProductDetailView
 
 from morozoff.apps.customshop.models import CustomProduct
-from morozoff.apps.customshop.views import MyCheckoutSelectionView
+from morozoff.apps.customshop.views import MyCheckoutSelectionView, CartItemDeleteView
 
 
 urlpatterns = patterns('',
@@ -48,6 +48,12 @@ urlpatterns = patterns('',
     # Cart
     url(r'^cart/delete/$', CartDetails.as_view(action='delete'), # DELETE
         name='cart_delete'),
+
+    url(r'^cart/delete/(?P<pk>\d+)/$',
+        CartItemDeleteView.as_view(),
+        name='cart_delete_single'
+    ),
+
     url('^cart/item/$', CartDetails.as_view(action='post'), # POST
         name='cart_item_add' ),
     url(r'^cart/$', CartDetails.as_view(

@@ -1,0 +1,25 @@
+{% extends "new/base.html" %}
+
+{% block title %}Удалить товар из корзины?{% endblock %}
+
+{% block css %}
+{#    <link href="{{ STATIC_URL }}new/css/basket_style.css" type="text/css" rel="stylesheet" />#}
+{% endblock %}
+
+{% block content %}
+    <h2>Удаление товара из корзины</h2>
+    <div style="font-size: 16px;">
+        <p>
+            Удалить из корзины товар
+            <strong>
+                &laquo;{{ cartitem.product.get_name }}&raquo;
+            </strong>?
+        </p>
+        <form method="post" action="{% url cart_delete_single cartitem.id %}">
+            {% csrf_token %}
+
+            <a href="{% url cart %}">Вернуться к корзине</a>
+            <button type="submit">Удалить товар из корзины</button>
+        </form>
+    </div>
+{% endblock %}
