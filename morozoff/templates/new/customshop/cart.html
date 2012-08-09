@@ -31,7 +31,7 @@
                                         <td class="itempic" rowspan="4">
                                             {% with item.product.images_ordered.0 as image %}
                                                 {% thumbnail image.src "96x96" crop="center" as im %}
-                                                    <a rel="prettyPhoto[pp_gal_{{ item.pk }}]" href="{{ image.url }}" title="">
+                                                    <a rel="prettyPhoto[pp_gal_{{ item.pk }}]" href="{{ image.url }}" title="{{ item.product.get_name }}">
                                                         <img alt="{{ image.alt }}" src="{{ im.url }}" />
                                                     </a>
                                                 {% endthumbnail %}
@@ -41,9 +41,6 @@
                                             {{ item.product.get_name }}
                                         </td>
                                     </tr>
-                                    <tr>
-{#                                        <td class="itempart">Артикул: 12893</td>#}
-                                    </tr>
                                 </tbody>
                             </table>
                         </td>
@@ -52,18 +49,13 @@
                             <input type="hidden" name="form-{{ forloop.counter0 }}-id" value="{{ item.quantity }}" id="id_form-{{ forloop.counter0 }}-id">
                         </td>
                         <td class="item price">{{item.product.get_price}} р.</td>
-{#                        <td class="item discount">0 р.</td>#}
+
                         <td class="item amount">{{ item.line_subtotal }} р.</td>
 
                         <td class="item number">
                             <a href="{% url cart_delete_single item.id %}">Удалить</a>
                         </td>
 
-{#                        <td class="item remove">#}
-{#                            <a href="/personal/order.php?DELETE_ITEM=6639" title="">#}
-{#                                <img src="http://test.love-sl.ru/shoprec/image/remove_X.jpg" title="" alt="" width="9" height="9" border="0">#}
-{#                            </a>#}
-{#                        </td>#}
                     </tr>
                 {% endfor %}
 
@@ -78,35 +70,35 @@
         </form>
 
 
-	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="forminfo">
-	  <tbody>
-      <tr>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="">
+        <tbody>
+          <tr>
+            <td class="forminfo" valign="top">
 
-      </tr>
-	  <tr>
-		<td class="forminfo" valign="top">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr>
+                        <td align="left" style="font-size:14px;" valign="middle" height="30"></td><td align="right" style="font-size:14px;"></td>
+                      </tr>
+                          <tr>
+                    <td align="left" style="border-bottom:1px dotted #FF0000; font-size:14px; font-weight:bold; color:#F00;">ИТОГО:</td>
+                    <td align="right" style="border-bottom:1px dotted #FF0000; font-size:14px; font-weight:bold; color:#F00;">
+                        {{cart.total_price}} р.
+                    </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" height="90" valign="middle" align="center" class="submit">
+                            <a class="checkout-link" href="{% url checkout_selection %}">Оформить заказ</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
 
-		<table width="100%" border="0" cellspacing="0" cellpadding="0">
-		  <tbody><tr>
-			<td align="left" style="font-size:14px;" valign="middle" height="30"></td><td align="right" style="font-size:14px;"></td>
-		  </tr>
-		  		  <tr>
-			<td align="left" style="border-bottom:1px dotted #FF0000; font-size:14px; font-weight:bold; color:#F00;">ИТОГО:</td><td align="right" style="border-bottom:1px dotted #FF0000; font-size:14px; font-weight:bold; color:#F00;"><input type="hidden" name="orderPrice" value="4990">{{cart.total_price}} р.</td>
-		  </tr>
-		  <tr>
-			<td colspan="2" height="90" valign="middle" align="center" class="submit">
-            <input type="hidden" value="4990" name="prderPrice">
-                <a class="checkout-link" href="{% url checkout_selection %}">Оформить заказ</a>
             </td>
-		  </tr>
-		  <tr>
-            </tr>
-		</tbody></table>
-		<br>
-
-		</td>
-	  </tr>
-	</tbody></table>
+          </tr>
+        </tbody>
+    </table>
 
     {% else %}
         <h3>Корзина пуста</h3>
