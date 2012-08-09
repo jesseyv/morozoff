@@ -10,10 +10,7 @@
     <h2>Удаление товара из корзины</h2>
     <div style="font-size: 16px;">
         <p>
-            Удалить из корзины товар
-            <strong>
-                &laquo;{{ cartitem.product.get_name }}&raquo;
-            </strong>?
+            Удалить из корзины товар &laquo;<strong>{{ cartitem.product.get_name }}</strong>&raquo;?
         </p>
         <form method="post" action="{% url cart_delete_single cartitem.id %}">
             {% csrf_token %}
