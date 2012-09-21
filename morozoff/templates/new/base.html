@@ -3,10 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+{#    <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}images/favicon.ico" />#}
+    <link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon.ico" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>{% block title %}{% endblock %}</title>
+
     <meta name="keywords" content="" />
     <meta name="description" content="" />
+
     <link href="{{ STATIC_URL }}new/css/style.css" type="text/css" rel="stylesheet" />
     <link href="{{ STATIC_URL }}new/css/home.css" type="text/css" rel="stylesheet" />
 
@@ -15,15 +20,9 @@
 
     <script type="text/javascript" src="{{ STATIC_URL }}new/js/jquery.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.flexslider-min.js"></script>
-{#    <script type="text/javascript" src="{{ STATIC_URL }}new/js/main.js"></script>#}
-{#    <script type="text/javascript" src="{{ STATIC_URL }}new/js/jquery.corner.js"></script>#}
-{#    <script type="text/javascript" src="{{ STATIC_URL }}new/js/popup.js"></script>#}
-{#    <script type="text/javascript" src="{{ STATIC_URL }}new/js/Hotdev/SlideshowMan.js"></script>#}
-{#    <script type="text/javascript" src="{{ STATIC_URL }}new/js/formFieldLabel.js"></script>#}
-{#    <script type="text/javascript" src="{{ STATIC_URL }}new/js/formTools.js"></script>#}
+
     {% block js %}
         <script>
-
             $(window).resize(function() {
                 resSubMenu();
             });
@@ -93,14 +92,10 @@
                 });
 
             });
-
         </script>
     {% endblock %}
-
-    <title>{% block title %}{% endblock %}</title>
-
 </head>
-<body >
+<body>
         <div id="page-all">
             <div id="header">
                     <a href="/"><img src="{{ STATIC_URL }}new/img/header11012012.jpg"  alt="Бриллианты Sunlight" /></a>
@@ -108,9 +103,6 @@
         <div id="container">
 
             <div id='topMenuContainer'>
-{#                {% load shop_simplecategories_tags %}#}
-
-{#<ul>{% show_root_categories %}</ul>#}
                 <div id='subContainerTopMenu' style="text-transform: uppercase;">
                     {% sitetree_menu from "main_menu" include "trunk" template "sitetree/menu.html" %}
 
@@ -153,42 +145,17 @@
                 {% endblock %}
 
 
-                    <div class="clear"> </div>
+                    <div class="clear"></div>
                 </div>
-                                <div id='footer'>
-                    <div id='footerMenuContainer'>
-                    <style type="text/css">
-                    #footer ul{
-                        margin:0 0 0 0;
-                        padding:0 0 0 0;
-                        background: none repeat scroll 0 0 #FFFFFF;
-                        border: 1px solid #E0E0E0;
-                        display: none;
-                        margin-top: 13px;
-                        padding:0 10px;
-                        position: absolute;
-                        text-align: left;
-                        width: 110px;
-                        z-index: 200;
-                    }
-                    #footer ul li{
-                        list-style:none;
-                        margin:0 0 0 0;
-                        padding:0 0 0 0;
-                        list-style: none outside none;
-                        display: block;
-                        list-style: none outside none;
-                        margin: 10px 0;
-                    }
-                    #footer
 
-                    </style>
+                <div id='footer'>
+                    <div id='footerMenuContainer'>
 
                     </div>
                 </div>
 
                 <div id='copyBlock'>
-                    <div id='copy' class='gBColor '>
+                    <div id='copy' class='gBColor'>
                     © 2012 Savva Morozoff
                     </div>
 
