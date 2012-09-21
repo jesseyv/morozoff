@@ -2,7 +2,9 @@
 {% spaceless %}
     <ul class='subMenu' id='subMenuIdindex'>
         {% for item in sitetree_items %}
-            <a href="{% sitetree_url for item %}" {% if item.hint %}title="{{ item.hint }}"{% endif %}>{{ item.title_resolved }}</a>
+            <li>
+                <a href="{% sitetree_url for item %}" {% if item.hint %}title="{{ item.hint }}"{% endif %}>{{ item.title_resolved }}</a>
+            </li>
         {% endfor %}
     </ul>
 {% endspaceless %}

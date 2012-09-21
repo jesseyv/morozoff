@@ -29,5 +29,51 @@
             "hidden": false, 
             "urlaspattern": false
         }
+    }, 
+    {
+        "pk": 2, 
+        "model": "sitetree.treeitem", 
+        "fields": {
+            "parent": 1, 
+            "access_restricted": false, 
+            "access_permissions": [], 
+            "description": "", 
+            "insitetree": true, 
+            "hint": "", 
+            "url": "/catalog/male/", 
+            "inbreadcrumbs": true, 
+            "title": "\u041c\u0443\u0436\u0441\u043a\u0430\u044f \u043a\u043e\u043b\u043b\u0435\u043a\u0446\u0438\u044f", 
+            "tree": 1, 
+            "access_perm_type": 1, 
+            "alias": null, 
+            "sort_order": 2, 
+            "inmenu": true, 
+            "access_loggedin": false, 
+            "hidden": false, 
+            "urlaspattern": false
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "sitetree.treeitem", 
+        "fields": {
+            "parent": 1, 
+            "access_restricted": false, 
+            "access_permissions": [], 
+            "description": "", 
+            "insitetree": true, 
+            "hint": "", 
+            "url": "/catalog/female/", 
+            "inbreadcrumbs": true, 
+            "title": "\u0416\u0435\u043d\u0441\u043a\u0430\u044f \u043a\u043e\u043b\u043b\u0435\u043a\u0446\u0438\u044f", 
+            "tree": 1, 
+            "access_perm_type": 1, 
+            "alias": null, 
+            "sort_order": 3, 
+            "inmenu": true, 
+            "access_loggedin": false, 
+            "hidden": false, 
+            "urlaspattern": false
+        }
     }
 ]
