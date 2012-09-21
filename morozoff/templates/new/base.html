@@ -1,4 +1,4 @@
-{% load shop_tags %}
+{% load sitetree shop_tags %}
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
@@ -18,7 +18,81 @@
 {#    <script type="text/javascript" src="{{ STATIC_URL }}new/js/Hotdev/SlideshowMan.js"></script>#}
 {#    <script type="text/javascript" src="{{ STATIC_URL }}new/js/formFieldLabel.js"></script>#}
 {#    <script type="text/javascript" src="{{ STATIC_URL }}new/js/formTools.js"></script>#}
-    {% block js %}{% endblock %}
+    {% block js %}
+        <script>
+
+            $(window).resize(function() {
+                resSubMenu();
+            });
+
+            function resSubMenu()
+            {
+                var menus = $('#topMenuContainer .subMenu');
+                $.each(menus, function(i, menu) {
+                    var id = $(menu).attr('id').substr(9, 50);
+                    var menuItem = $('#menuId' + id);
+                    var offset = menuItem.offset();
+                    $(menu).css('left', offset.left).css('top', offset.top);
+                });
+            }
+
+            var selectedMenu = false;
+            var hoverTopItem = false;
+            var hoverSubMenuCotainer = false;
+
+            function hideMenuContainer() {
+                if(!hoverTopItem && !hoverSubMenuCotainer) {
+                    $('#topMenuContainer .subMenu').hide();
+                }
+                window.setTimeout('hideMenuContainer()', 100);
+            }
+
+            function menuPopUpManager()
+            {
+
+                $('#topMenuContainer .subMenu').each(function() {
+                    var id = $(this).attr('id').substr(9, 50);
+                    var offset = $('#menuId' + id).offset();
+                    $(this).css('left', offset.left).css('top', offset.top);
+                });
+
+                $('#topMenuContainer a.menuItem').hover(function() {
+                            resSubMenu();
+                            if(selectedMenu != $(this).attr('id').substr(6, 50)) {
+                                $('#subMenuId' + selectedMenu).hide();
+                            }
+
+                            // console.log(selectedMenu);
+                            selectedMenu = $(this).attr('id').substr(6, 50);
+                            hoverTopItem = true;
+
+                            $('#subMenuId' + selectedMenu).show();
+                        },
+                        function() {
+                            hoverTopItem = false;
+                        });
+
+
+                $('#topMenuContainer .subMenu').hover(function() {
+                            hoverSubMenuCotainer = true;
+                        },
+                        function() {
+                            hoverSubMenuCotainer = false;
+                        });
+
+                hideMenuContainer();
+            }
+
+            $(function() {
+
+                $('div#topMenuContainer').ready(function() {
+                    menuPopUpManager();
+                });
+
+            });
+
+        </script>
+    {% endblock %}
 
     <title>{% block title %}{% endblock %}</title>
 
@@ -31,64 +105,68 @@
         <div id="container">
 
             <div id='topMenuContainer'>
-                <div id='subContainerTopMenu'>
-                    <a class='menuItem'  id='menuIdindex' href='{% url product_list %}'>КАТАЛОГ </a>
-                    <ul class='subMenu' id='subMenuIdindex'>
-                        <li class='subMenuItem'>
-                            <a href='/catalog/'>Все украшения</a>
-                        </li>
-                                            <li class='subMenuItem empty'>
-                            <a href=''></a>
-                        </li>
-                                            <li class='subMenuItem'>
-                            <a href='/catalog/price1.html'>до 5 000</a>
-                        </li>
-                                            <li class='subMenuItem'>
-                            <a href='/catalog/price2.html'>от 5 000 до 10 000</a>
-                        </li>
-                                            <li class='subMenuItem'>
-                            <a href='/catalog/price3.html'>от 10 000 до 20 000</a>
-                        </li>
-                                            <li class='subMenuItem'>
-                            <a href='/catalog/price4.html'>от 20 000 до 50 000</a>
-                        </li>
-                                            <li class='subMenuItem'>
-                            <a href='/catalog/price5.html'>более 50 000</a>
-                        </li>
-                                            <li class='subMenuItem empty'>
-                            <a href=''></a>
-                        </li>
-                                            <li class='subMenuItem'>
-                            <a href='/catalog/rings.html'>Кольца</a>
-                        </li>
-                                            <li class='subMenuItem'>
-                            <a href='/catalog/earrings.html'>Серьги</a>
-                        </li>
-                                            <li class='subMenuItem'>
-                            <a href='/catalog/earring-studs.html'>Серьги «гвоздики»</a>
-                        </li>
-                                            <li class='subMenuItem'>
-                            <a href='/catalog/pendants.html'>Подвески</a>
-                        </li>
-                                            <li class='subMenuItem empty'>
-                            <a href=''></a>
-                        </li>
-                                            <li class='subMenuItem'>
-                            <a href='/catalog/white-gold.html'>Белое золото</a>
-                        </li>
-                                            <li class='subMenuItem'>
-                            <a href='/catalog/pink-gold.html'>Розовое золото</a>
-                        </li>
-                                            <li class='subMenuItem'>
-                            <a href='/catalog/yellow-gold.html'>Жёлтое золото</a>
-                        </li>
-                                            <li class='subMenuItem empty'>
-                            <a href=''></a>
-                        </li>
-                                            <li class='subMenuItem'>
-                            <a href='/catalog/silver/'>Серебро</a>
-                        </li>
-                    </ul>
+{#                {% load shop_simplecategories_tags %}#}
+
+{#<ul>{% show_root_categories %}</ul>#}
+                <div id='subContainerTopMenu' style="text-transform: uppercase;">
+                    {% sitetree_menu from "main_menu" include "trunk" template "sitetree/menu.html" %}
+{#                    <a class='menuItem'  id='menuIdindex' href='{% url product_list %}'>КАТАЛОГ</a>#}
+{#                    <ul class='subMenu' id='subMenuIdindex'>#}
+{#                        <li class='subMenuItem'>#}
+{#                            <a href='/catalog/'>Все украшения</a>#}
+{#                        </li>#}
+{#                                            <li class='subMenuItem empty'>#}
+{#                            <a href=''></a>#}
+{#                        </li>#}
+{#                                            <li class='subMenuItem'>#}
+{#                            <a href='/catalog/price1.html'>до 5 000</a>#}
+{#                        </li>#}
+{#                                            <li class='subMenuItem'>#}
+{#                            <a href='/catalog/price2.html'>от 5 000 до 10 000</a>#}
+{#                        </li>#}
+{#                                            <li class='subMenuItem'>#}
+{#                            <a href='/catalog/price3.html'>от 10 000 до 20 000</a>#}
+{#                        </li>#}
+{#                                            <li class='subMenuItem'>#}
+{#                            <a href='/catalog/price4.html'>от 20 000 до 50 000</a>#}
+{#                        </li>#}
+{#                                            <li class='subMenuItem'>#}
+{#                            <a href='/catalog/price5.html'>более 50 000</a>#}
+{#                        </li>#}
+{#                                            <li class='subMenuItem empty'>#}
+{#                            <a href=''></a>#}
+{#                        </li>#}
+{#                                            <li class='subMenuItem'>#}
+{#                            <a href='/catalog/rings.html'>Кольца</a>#}
+{#                        </li>#}
+{#                                            <li class='subMenuItem'>#}
+{#                            <a href='/catalog/earrings.html'>Серьги</a>#}
+{#                        </li>#}
+{#                                            <li class='subMenuItem'>#}
+{#                            <a href='/catalog/earring-studs.html'>Серьги «гвоздики»</a>#}
+{#                        </li>#}
+{#                                            <li class='subMenuItem'>#}
+{#                            <a href='/catalog/pendants.html'>Подвески</a>#}
+{#                        </li>#}
+{#                                            <li class='subMenuItem empty'>#}
+{#                            <a href=''></a>#}
+{#                        </li>#}
+{#                                            <li class='subMenuItem'>#}
+{#                            <a href='/catalog/white-gold.html'>Белое золото</a>#}
+{#                        </li>#}
+{#                                            <li class='subMenuItem'>#}
+{#                            <a href='/catalog/pink-gold.html'>Розовое золото</a>#}
+{#                        </li>#}
+{#                                            <li class='subMenuItem'>#}
+{#                            <a href='/catalog/yellow-gold.html'>Жёлтое золото</a>#}
+{#                        </li>#}
+{#                                            <li class='subMenuItem empty'>#}
+{#                            <a href=''></a>#}
+{#                        </li>#}
+{#                                            <li class='subMenuItem'>#}
+{#                            <a href='/catalog/silver/'>Серебро</a>#}
+{#                        </li>#}
+{#                    </ul>#}
 
                     <a class='menuItem' href='/terms/'>УСЛОВИЯ ПРОДАЖИ</a>
                     <a class='menuItem' href='/partners/'>ПАРТНЕРАМ</a>

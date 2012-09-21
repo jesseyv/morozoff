@@ -4,6 +4,7 @@ from django.contrib.admin.options import ModelAdmin
 from django.utils.translation import ugettext_lazy as _
 from shop.admin.orderadmin import OrderAdmin
 from shop.models.ordermodel import Order
+from shop_simplecategories.admin import ProductWithCategoryForm
 
 from models import CustomProduct, ProductImage
 
@@ -13,8 +14,15 @@ class ProductImageInline(admin.TabularInline):
     extra = 1
 
 
+class ProductForm(ProductWithCategoryForm):
+    class Meta(object):
+        model = CustomProduct
+
+
 class CustomProductAdmin(admin.ModelAdmin):
     class Media:
+#        form = ProductForm
+
         js = (
             'tiny_mce/tiny_mce.js',
             'filebrowser/js/TinyMCEAdmin.js',
@@ -38,3 +46,4 @@ admin.site.unregister(Order)
 ORDER_MODEL = getattr(settings, 'SHOP_ORDER_MODEL', None)
 if not ORDER_MODEL:
     admin.site.register(Order, MyOrderAdmin)
+

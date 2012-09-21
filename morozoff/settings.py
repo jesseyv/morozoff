@@ -1,4 +1,5 @@
 # Django settings for simpleshop project.
+import shop_categories
 from common_settings import *
 
 from local_settings import *
@@ -11,6 +12,7 @@ INSTALLED_APPS = INSTALLED_APPS + [
     'south',
     'sitetree',
     'tinymce',
+    'shop_simplecategories',
 #    'feedback',
     # Our own apps
     'morozoff.apps.common',
@@ -19,6 +21,11 @@ INSTALLED_APPS = INSTALLED_APPS + [
     'morozoff.apps.articles',
     'morozoff.apps.banners',
 ]
+
+#SHOP_PRODUCT_MODEL = 'shop_categories.models.defaults.product.default.CategoryProduct'
+#SHOP_PRODUCT_MODEL = 'morozoff.apps.customshop.models.CustomProduct'
+#SHOP_CATEGORIES_CATEGORY_MODEL = 'morozoff.apps.customshop.models.category.Category'
+
 SHOP_SHIPPING_BACKENDS = [
     'morozoff.apps.customshop.shipping.backends.pickup.PickupShipping',
     'morozoff.apps.customshop.shipping.backends.delivery_in_moscow.DeliveryInMoscowShipping',

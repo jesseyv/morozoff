@@ -2,8 +2,8 @@
 from django.db import models
 from shop.order_signals import completed
 
-from base.models import BaseProduct, BaseProductImage
-from signals import confirmed_email_notification
+from morozoff.apps.customshop.base.models import BaseProductImage, BaseProduct
+from morozoff.apps.customshop.signals import confirmed_email_notification
 
 
 class CustomProduct(BaseProduct):
@@ -24,3 +24,4 @@ class ProductImage(BaseProductImage):
 
 
 completed.connect(confirmed_email_notification)
+

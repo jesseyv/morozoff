@@ -12,3 +12,4 @@ django-tinymce==1.5.1a2
 ipython==0.11
 sorl-thumbnail
 wsgiref
+django-shop-simplecategories
