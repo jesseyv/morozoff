@@ -9,9 +9,12 @@
     <meta name="description" content="" />
     <link href="{{ STATIC_URL }}new/css/style.css" type="text/css" rel="stylesheet" />
     <link href="{{ STATIC_URL }}new/css/home.css" type="text/css" rel="stylesheet" />
+
+    <link href="{{ STATIC_URL }}css/flexslider.css" type="text/css" rel="stylesheet" />
     {% block css %}{% endblock %}
 
     <script type="text/javascript" src="{{ STATIC_URL }}new/js/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.flexslider-min.js"></script>
 {#    <script type="text/javascript" src="{{ STATIC_URL }}new/js/main.js"></script>#}
 {#    <script type="text/javascript" src="{{ STATIC_URL }}new/js/jquery.corner.js"></script>#}
 {#    <script type="text/javascript" src="{{ STATIC_URL }}new/js/popup.js"></script>#}
@@ -110,63 +113,6 @@
 {#<ul>{% show_root_categories %}</ul>#}
                 <div id='subContainerTopMenu' style="text-transform: uppercase;">
                     {% sitetree_menu from "main_menu" include "trunk" template "sitetree/menu.html" %}
-{#                    <a class='menuItem'  id='menuIdindex' href='{% url product_list %}'>КАТАЛОГ</a>#}
-{#                    <ul class='subMenu' id='subMenuIdindex'>#}
-{#                        <li class='subMenuItem'>#}
-{#                            <a href='/catalog/'>Все украшения</a>#}
-{#                        </li>#}
-{#                                            <li class='subMenuItem empty'>#}
-{#                            <a href=''></a>#}
-{#                        </li>#}
-{#                                            <li class='subMenuItem'>#}
-{#                            <a href='/catalog/price1.html'>до 5 000</a>#}
-{#                        </li>#}
-{#                                            <li class='subMenuItem'>#}
-{#                            <a href='/catalog/price2.html'>от 5 000 до 10 000</a>#}
-{#                        </li>#}
-{#                                            <li class='subMenuItem'>#}
-{#                            <a href='/catalog/price3.html'>от 10 000 до 20 000</a>#}
-{#                        </li>#}
-{#                                            <li class='subMenuItem'>#}
-{#                            <a href='/catalog/price4.html'>от 20 000 до 50 000</a>#}
-{#                        </li>#}
-{#                                            <li class='subMenuItem'>#}
-{#                            <a href='/catalog/price5.html'>более 50 000</a>#}
-{#                        </li>#}
-{#                                            <li class='subMenuItem empty'>#}
-{#                            <a href=''></a>#}
-{#                        </li>#}
-{#                                            <li class='subMenuItem'>#}
-{#                            <a href='/catalog/rings.html'>Кольца</a>#}
-{#                        </li>#}
-{#                                            <li class='subMenuItem'>#}
-{#                            <a href='/catalog/earrings.html'>Серьги</a>#}
-{#                        </li>#}
-{#                                            <li class='subMenuItem'>#}
-{#                            <a href='/catalog/earring-studs.html'>Серьги «гвоздики»</a>#}
-{#                        </li>#}
-{#                                            <li class='subMenuItem'>#}
-{#                            <a href='/catalog/pendants.html'>Подвески</a>#}
-{#                        </li>#}
-{#                                            <li class='subMenuItem empty'>#}
-{#                            <a href=''></a>#}
-{#                        </li>#}
-{#                                            <li class='subMenuItem'>#}
-{#                            <a href='/catalog/white-gold.html'>Белое золото</a>#}
-{#                        </li>#}
-{#                                            <li class='subMenuItem'>#}
-{#                            <a href='/catalog/pink-gold.html'>Розовое золото</a>#}
-{#                        </li>#}
-{#                                            <li class='subMenuItem'>#}
-{#                            <a href='/catalog/yellow-gold.html'>Жёлтое золото</a>#}
-{#                        </li>#}
-{#                                            <li class='subMenuItem empty'>#}
-{#                            <a href=''></a>#}
-{#                        </li>#}
-{#                                            <li class='subMenuItem'>#}
-{#                            <a href='/catalog/silver/'>Серебро</a>#}
-{#                        </li>#}
-{#                    </ul>#}
 
                     <a class='menuItem' href='/terms/'>УСЛОВИЯ ПРОДАЖИ</a>
                     <a class='menuItem' href='/partners/'>ПАРТНЕРАМ</a>
@@ -177,108 +123,36 @@
 
             <div id="content">
                 {% block content %}
-                <div id='mainBannerBlock' style='background-color: #e60f0c;' >
-                    <div  style='height: 612px;'>
-{#                        <a href='/catalog/collections.php' style='position: absolute; z-index: 100;'>#}
-{#                            <img src='{{ STATIC_URL }}new/img/main/fashion_brill.png' alt='' title='' style='position: absolute; margin-left: 100px; margin-top: 140px; width: 200px; ' />#}
-{#                        </a>#}
-                        <div id='bannerMenuContainerWhite' style='margin-top: 180px;  z-index: 100;'>
 
-                            <br />
-                            <ul id='bannerMenuWhite' style=''>
-                                <li>
-                                    <br/>
-                                </li>
-                                <li>
-                                    <a class='menuItem'  id='menuIdindex' href='{% url product_list %}'>КАТАЛОГ </a>
-                                </li>
-                                <li>
-                                    <br/>
-                                </li>
-                                <li>
-{#                                    <a href='/catalog/chance.html' style='font-weight: normal;'>БРИЛЛИАНТОВЫЙ ШАНС</a>#}
-                                </li>
-                                <li>
-                                    <br/>
-                                </li>
-                                <li><br/></li>
-                                <li><br/></li>
-                                <li><br/></li>
-                                <li><br/></li>
-                                <li><br/></li>
-                                <li><br/></li>
-                                <li><br/></li>
+                    <style>
+                        .flexslider {
+                            width: 907px;
+                            height: 619px;
+                            margin: 0 auto;
+                        }
+                    </style>
 
-                                <li><br/></li>
-                                <li><br/></li>
-
-
-
-
-                                <li><br/></li>
-                                <li>
-{#                                    <a href='#'><b>ЮВЕЛИРНЫЕ ГИПЕРМАРКЕТЫ</b></a>#}
-                                </li>
-                                <li>
-{#                                    <a href='/shops/locator.php'><b>ГДЕ КУПИТЬ</b></a>#}
-                                </li>
-                            </ul>
+                    <section class="slider">
+                        <div class="flexslider">
+                          <ul class="slides">
+                            <li>
+                                <img src="{{ STATIC_URL }}images/slider/1.jpg"/>
+                            </li>
+                            <li>
+                                <img src="{{ STATIC_URL }}images/slider/2.jpg"/>
+                            </li>
+                          </ul>
                         </div>
+                      </section>
 
-                        <div id='actionContainer' style='position: absolute; margin-left: 440px;'>
-                {#            <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" width="460" height="500" align="middle">#}
-                {#                <param name="movie" value="/img/main/key1.swf" />#}
-                {#                <param name="quality" value="high" />#}
-                {#                <param name="bgcolor" value="#e60f0c" />#}
-                {#                <param name="wmode" value="opaque" />#}
-                {#                <embed src="/img/main/key1.swf" quality="high" wmode="opaque" bgcolor="#e60f0c" width="460" height="500" name="logo" align="middle" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />#}
-                {#            </object>#}
-
-                        </div>
-{#        <script language="javascript">#}
-{#            var flash = false;#}
-{##}
-{#            if (navigator.plugins) {#}
-{#                if (navigator.plugins["Shockwave Flash"]) {#}
-{#                    flash = true;#}
-{#                }#}
-{#            }#}
-{##}
-{#            if($.browser.msie) {#}
-{#                flash = true;#}
-{#            }#}
-{##}
-{#            if(!flash) {#}
-{#                var bannerCap = "<a href='http://www.love-sl.ru/catalog/keys.html'><img style='' src='/img/main/key1.jpg' alt='' title='' /></a>";#}
-{##}
-{#                $('#actionContainer').empty();#}
-{#                $('#actionContainer').html(bannerCap);#}
-{#            }#}
-{#        </script>#}
-
-
-        <div id='collageContainer' style='position: absolute; margin-left: 374px; margin-top: 87px;'>
-
-        </div>
-                    <div id='sliderController' style='position: absolute; margin-left: 590px; margin-top: 525px;'>
-                                <div class='clear'></div>
-            </div>
-
-    </div>
-    <style>
-        #bannerTable td {
-            border: 10px solid #f6f6f6;
-        }
-    </style>
-
-</div>
-
-
-
-
-
-
+                    <script>
+                        $('.flexslider').flexslider({
+                            animation: "slide"
+                        });
+                    </script>
                 {% endblock %}
+
+
                     <div class="clear"> </div>
                 </div>
                                 <div id='footer'>
@@ -312,10 +186,6 @@
 
                     </div>
                 </div>
-
-
-
-
 
                 <div id='copyBlock'>
                     <div id='copy' class='gBColor '>
