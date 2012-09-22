@@ -1,5 +1,4 @@
 # Django settings for simpleshop project.
-import shop_categories
 from common_settings import *
 
 from local_settings import *
