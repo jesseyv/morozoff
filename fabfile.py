@@ -63,8 +63,8 @@ def deploy_init():
                     _sudo('pip install -r requirements.txt')
 
                     print(green('Syncing DB'))
-                    _sudo('python manage.py syncdb --noinput')
-                    
+                    _sudo('python manage.py syncdb --noinput --migrate')
+
                     print(green('Migrating DB'))
                     _sudo('python manage.py migrate --noinput')
 
