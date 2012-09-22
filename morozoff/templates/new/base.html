@@ -1,9 +1,8 @@
 {% load sitetree shop_tags %}
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<!doctype html>
+<html>
 <head>
 
-{#    <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}images/favicon.ico" />#}
     <link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon.ico" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -101,6 +100,10 @@
                     <a href="/"><img src="{{ STATIC_URL }}new/img/header11012012.jpg"  alt="Бриллианты Sunlight" /></a>
             </div>
         <div id="container">
+
+{#        {% load shop_simplecategories_tags %}#}
+
+{#<ul>{% show_root_categories %}</ul>#}
 
             <div id='topMenuContainer'>
                 <div id='subContainerTopMenu' style="text-transform: uppercase;">

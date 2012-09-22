@@ -22,10 +22,6 @@ INSTALLED_APPS = INSTALLED_APPS + [
     'morozoff.apps.banners',
 ]
 
-#SHOP_PRODUCT_MODEL = 'shop_categories.models.defaults.product.default.CategoryProduct'
-#SHOP_PRODUCT_MODEL = 'morozoff.apps.customshop.models.CustomProduct'
-#SHOP_CATEGORIES_CATEGORY_MODEL = 'morozoff.apps.customshop.models.category.Category'
-
 SHOP_SHIPPING_BACKENDS = [
     'morozoff.apps.customshop.shipping.backends.pickup.PickupShipping',
     'morozoff.apps.customshop.shipping.backends.delivery_in_moscow.DeliveryInMoscowShipping',
@@ -35,6 +31,8 @@ SHOP_PAYMENT_BACKENDS = [
 ]
 
 SHOP_ADDRESS_MODEL = 'morozoff.apps.customshop.address.models.Address'
+
+#SHOP_PRODUCT_MODEL = 'morozoff.apps.customshop.models.CustomProduct'
 
 TINYMCE_JS_URL = os.path.join(STATIC_ROOT, "tiny_mce/tiny_mce.js")
 TINYMCE_JS_ROOT = os.path.join(MEDIA_ROOT, "tiny_mce")

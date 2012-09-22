@@ -6,6 +6,7 @@ from shop.views.checkout import ThankYouView, ShippingBackendRedirectView,\
     PaymentBackendRedirectView
 from shop.views.order import OrderListView, OrderDetailView
 from shop.views.product import ProductDetailView
+from shop_simplecategories.views import CategoryDetailView
 
 from morozoff.apps.customshop.models import CustomProduct
 from morozoff.apps.customshop.views import MyCheckoutSelectionView, CartItemDeleteView
@@ -93,4 +94,10 @@ urlpatterns = patterns('',
     url(r'^orders/(?P<pk>\d+)/$',
         OrderDetailView.as_view(),
         name='order_detail'),
+
+    url(r'^catalog/(?P<slug>[0-9A-Za-z-_.//]+)/$',
+        CategoryDetailView.as_view(
+            template_name="new/customshop/customproduct_list.html"),
+        name='category_detail'
+    ),
 )
