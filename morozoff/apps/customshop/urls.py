@@ -97,7 +97,7 @@ urlpatterns = patterns('',
 
     url(r'^catalog/(?P<slug>[0-9A-Za-z-_.//]+)/$',
         CategoryDetailView.as_view(
-            template_name="new/customshop/customproduct_list.html"),
+            template_name="customshop/category_detail.html"),
         name='category_detail'
     ),
 )

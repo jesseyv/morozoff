@@ -1,7 +1,7 @@
 {% extends "new/base.html" %}
 {% load thumbnail %}
 
-{% block title %}Каталог{% endblock %}
+{% block title %}{{ category.name }}{% endblock %}
 
 {% block css %}
     <link href="{{ STATIC_URL }}new/css/seo_template.css" type="text/css" rel="stylesheet" />
@@ -9,11 +9,11 @@
 {% endblock %}
 
 {% block content %}
-{#    <style>#}
-{#        .seoDetailText {#}
-{#            /*height: 160px;*/#}
-{#        }#}
-{#    </style>#}
+    {#    <style>#}
+    {#        .seoDetailText {#}
+    {#            /*height: 160px;*/#}
+    {#        }#}
+    {#    </style>#}
 
     <script type="text/javascript">
 
@@ -67,13 +67,13 @@
     </script>
 
     <div id="catalogAjax" class="catalogList" style="display: block; ">
-            {% with list=customproduct_list %}
-            <table>
+            {% with list=category.products.all %}
+                <table>
               <tbody>
                 <tr>
                   <td id="jew0" colspan="2" rowspan="2" class="product big popright">
                     {% if list.0 %}
-                    <div class="innerContainer" id="{{ list.0.id }}">
+                        <div class="innerContainer" id="{{ list.0.id }}">
                       <div class="show" style="display: none;">
                         <div class="decription">
                           <div class="seoDetailText" style="display: block;">
@@ -100,9 +100,9 @@
                         <div class="photo">
 
                               {% if list.0.logo %}
-                                <a href="{% url product_detail list.0.slug %}">
+                                  <a href="{% url product_detail list.0.slug %}">
                                   {% thumbnail list.0.logo.src "400x400" crop="center" as im %}
-                                  <img src="{{ im.url }}" alt="{{ list.0.logo.alt }}" style="display: inline;">
+                                      <img src="{{ im.url }}" alt="{{ list.0.logo.alt }}" style="display: inline;">
                                   {% endthumbnail %}
                                 </a>
                               {% endif %}
@@ -122,7 +122,7 @@
 
                   <td id="jew1" class="product popRightSmall">
                     {% if list.2 %}
-                    <div class="innerContainer" id="{{ list.2.slug }}">
+                        <div class="innerContainer" id="{{ list.2.slug }}">
                       <div class="show" style="display: none;">
                         <div class="decription">
                           <div class="seoDetailText" style="display: block;">
@@ -149,9 +149,9 @@
                         <div class="photo">
 
                               {% if list.2.logo %}
-                                <a href="{% url product_detail list.2.slug %}">
+                                  <a href="{% url product_detail list.2.slug %}">
                                   {% thumbnail list.2.logo.src "140x140" crop="center" as im %}
-                                  <img src="{{ im.url }}" alt="{{ list.2.logo.alt }}" style="display: inline;">
+                                      <img src="{{ im.url }}" alt="{{ list.2.logo.alt }}" style="display: inline;">
                                   {% endthumbnail %}
                                 </a>
                               {% endif %}
@@ -171,7 +171,7 @@
 
                   <td id="jew2" class="product popLeftSmall">
                     {% if list.3 %}
-                    <div class="innerContainer" id="pr30589">
+                        <div class="innerContainer" id="pr30589">
                       <div class="show" style="display: none;">
                         <div class="decription">
                           <div class="seoDetailText" style="display: block;">
@@ -195,13 +195,13 @@
                       </div>
 
                       <div class="contain" style=
-                      "z-index: 50; border-color: rgb(239, 237, 238);">
+                              "z-index: 50; border-color: rgb(239, 237, 238);">
                         <div class="photo">
 
                               {% if list.3.logo %}
-                                <a href="{% url product_detail list.3.slug %}">
+                                  <a href="{% url product_detail list.3.slug %}">
                                   {% thumbnail list.3.logo.src "140x140" crop="center" as im %}
-                                  <img src="{{ im.url }}" alt="{{ list.3.logo.alt }}" style="display: inline;">
+                                      <img src="{{ im.url }}" alt="{{ list.3.logo.alt }}" style="display: inline;">
                                   {% endthumbnail %}
                                 </a>
                               {% endif %}
@@ -221,7 +221,7 @@
 
                   <td id="jew3" class="product popLeftSmall">
                     {% if list.4 %}
-                    <div class="innerContainer" id="pr60518">
+                        <div class="innerContainer" id="pr60518">
                       <div class="show" style="display: none;">
                         <div class="decription">
                           <div class="seoDetailText" style="display: block;">
@@ -245,13 +245,13 @@
                       </div>
 
                       <div class="contain" style=
-                      "z-index: 50; border-color: rgb(239, 237, 238);">
+                              "z-index: 50; border-color: rgb(239, 237, 238);">
                         <div class="photo">
 
                               {% if list.4.logo %}
-                                <a href="{% url product_detail list.4.slug %}">
+                                  <a href="{% url product_detail list.4.slug %}">
                                   {% thumbnail list.4.logo.src "140x140" crop="center" as im %}
-                                  <img src="{{ im.url }}" alt="{{ list.4.logo.alt }}" style="display: inline;">
+                                      <img src="{{ im.url }}" alt="{{ list.4.logo.alt }}" style="display: inline;">
                                   {% endthumbnail %}
                                 </a>
                               {% endif %}
@@ -271,7 +271,7 @@
 
                   <td id="jew4" class="product popLeftSmall">
                     {% if list.5 %}
-                    <div class="innerContainer" id="pr2268">
+                        <div class="innerContainer" id="pr2268">
                       <div class="show" style="display: none;">
                         <div class="decription">
                           <div class="seoDetailText" style="display: block;">
@@ -298,9 +298,9 @@
                         <div class="photo">
 
                               {% if list.5.logo %}
-                                <a href="{% url product_detail list.5.slug %}">
+                                  <a href="{% url product_detail list.5.slug %}">
                                   {% thumbnail list.5.logo.src "140x140" crop="center" as im %}
-                                  <img src="{{ im.url }}" alt="{{ list.5.logo.alt }}" style="display: inline;">
+                                      <img src="{{ im.url }}" alt="{{ list.5.logo.alt }}" style="display: inline;">
                                   {% endthumbnail %}
                                 </a>
                               {% endif %}
@@ -315,14 +315,14 @@
                         </div>
                       </div>
                     </div>
-                  </td>
-                  {% endif %}
+                        </td>
+                    {% endif %}
                 </tr>
 
                 <tr>
                   <td id="jew5" class="product popRightSmall">
                     {% if list.6 %}
-                    <div class="innerContainer" id="pr2266">
+                        <div class="innerContainer" id="pr2266">
                       <div class="show" style="display: none;">
                         <div class="decription">
                           <div class="seoDetailText" style="display: block;">
@@ -349,9 +349,9 @@
                         <div class="photo">
 
                               {% if list.6.logo %}
-                                <a href="{% url product_detail list.6.slug %}">
+                                  <a href="{% url product_detail list.6.slug %}">
                                   {% thumbnail list.6.logo.src "140x140" crop="center" as im %}
-                                  <img src="{{ im.url }}" alt="{{ list.6.logo.alt }}" style="display: inline;">
+                                      <img src="{{ im.url }}" alt="{{ list.6.logo.alt }}" style="display: inline;">
                                   {% endthumbnail %}
                                 </a>
                               {% endif %}
@@ -371,7 +371,7 @@
 
                   <td id="jew6" class="product popLeftSmall">
                     {% if list.7 %}
-                    <div class="innerContainer" id="pr60668">
+                        <div class="innerContainer" id="pr60668">
                       <div class="show" style="display: none;">
                         <div class="decription">
                           <div class="seoDetailText" style="display: block;">
@@ -398,9 +398,9 @@
                         <div class="photo">
 
                               {% if list.7.logo %}
-                                <a href="{% url product_detail list.7.slug %}">
+                                  <a href="{% url product_detail list.7.slug %}">
                                   {% thumbnail list.7.logo.src "140x140" crop="center" as im %}
-                                  <img src="{{ im.url }}" alt="{{ list.7.logo.alt }}" style="display: inline;">
+                                      <img src="{{ im.url }}" alt="{{ list.7.logo.alt }}" style="display: inline;">
                                   {% endthumbnail %}
                                 </a>
                               {% endif %}
@@ -420,7 +420,7 @@
 
                   <td id="jew7" colspan="2" rowspan="2" class="product big popleft">
                     {% if list.1 %}
-                    <div class="innerContainer" id="pr60455">
+                        <div class="innerContainer" id="pr60455">
                       <div class="show" style="display: none;">
                         <div class="decription">
                           <div class="seoDetailText" style="display: block;">
@@ -447,9 +447,9 @@
                         <div class="photo">
 
                               {% if list.1.logo %}
-                                <a href="{% url product_detail list.1.slug %}">
+                                  <a href="{% url product_detail list.1.slug %}">
                                   {% thumbnail list.1.logo.src "400x400" crop="center" as im %}
-                                  <img src="{{ im.url }}" alt="{{ list.7.logo.alt }}" style="display: inline;">
+                                      <img src="{{ im.url }}" alt="{{ list.7.logo.alt }}" style="display: inline;">
                                   {% endthumbnail %}
                                 </a>
                               {% endif %}
@@ -471,7 +471,7 @@
                 <tr>
                   <td id="jew8" class="product popRightSmall">
                     {% if list.8 %}
-                    <div class="innerContainer" id="pr43863">
+                        <div class="innerContainer" id="pr43863">
                       <div class="show" style="display: none;">
                         <div class="decription">
                           <div class="seoDetailText" style="display: block;">
@@ -498,9 +498,9 @@
                         <div class="photo">
 
                               {% if list.8.logo %}
-                                <a href="{% url product_detail list.8.slug %}">
+                                  <a href="{% url product_detail list.8.slug %}">
                                   {% thumbnail list.8.logo.src "140x140" crop="center" as im %}
-                                  <img src="{{ im.url }}" alt="{{ list.8logo.alt }}" style="display: inline;">
+                                      <img src="{{ im.url }}" alt="{{ list.8logo.alt }}" style="display: inline;">
                                   {% endthumbnail %}
                                 </a>
                               {% endif %}
@@ -520,7 +520,7 @@
 
                   <td id="jew9" class="product popRightSmall">
                     {% if list.9 %}
-                    <div class="innerContainer" id="pr60282">
+                        <div class="innerContainer" id="pr60282">
                       <div class="show" style="display: none;">
                         <div class="decription">
                           <div class="seoDetailText" style="display: block;">
@@ -547,9 +547,9 @@
                         <div class="photo">
 
                               {% if list.9.logo %}
-                                <a href="{% url product_detail list.9.slug %}">
+                                  <a href="{% url product_detail list.9.slug %}">
                                   {% thumbnail list.9.logo.src "140x140" crop="center" as im %}
-                                  <img src="{{ im.url }}" alt="{{ list.9.logo.alt }}" style="display: inline;">
+                                      <img src="{{ im.url }}" alt="{{ list.9.logo.alt }}" style="display: inline;">
                                   {% endthumbnail %}
                                 </a>
                               {% endif %}
@@ -569,7 +569,7 @@
 
                   <td id="jew10" class="product popRightSmall">
                     {% if list.10 %}
-                    <div class="innerContainer" id="pr60632">
+                        <div class="innerContainer" id="pr60632">
                       <div class="show" style="display: none;">
                         <div class="decription">
                           <div class="seoDetailText" style="display: block;">
@@ -596,9 +596,9 @@
                         <div class="photo">
 
                               {% if list.10.logo %}
-                                <a href="{% url product_detail list.10.slug %}">
+                                  <a href="{% url product_detail list.10.slug %}">
                                   {% thumbnail list.10.logo.src "140x140" crop="center" as im %}
-                                  <img src="{{ im.url }}" alt="{{ list.10.logo.alt }}" style="display: inline;">
+                                      <img src="{{ im.url }}" alt="{{ list.10.logo.alt }}" style="display: inline;">
                                   {% endthumbnail %}
                                 </a>
                               {% endif %}
@@ -618,7 +618,7 @@
 
                   <td id="jew11" class="product popLeftSmall">
                     {% if list.11 %}
-                    <div class="innerContainer" id="pr7844">
+                        <div class="innerContainer" id="pr7844">
                       <div class="show" style="display: none;">
                         <div class="decription">
                           <div class="seoDetailText" style="display: block;">
@@ -645,9 +645,9 @@
                         <div class="photo">
 
                               {% if list.11.logo %}
-                                <a href="{% url product_detail list.11.slug %}">
+                                  <a href="{% url product_detail list.11.slug %}">
                                   {% thumbnail list.11.logo.src "140x140" crop="center" as im %}
-                                  <img src="{{ im.url }}" alt="{{ list.11.logo.alt }}" style="display: inline;">
+                                      <img src="{{ im.url }}" alt="{{ list.11.logo.alt }}" style="display: inline;">
                                   {% endthumbnail %}
                                 </a>
                               {% endif %}

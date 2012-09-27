@@ -112,7 +112,7 @@ SHOP_ADDRESS_MODEL = 'apps.customshop.address.models.Address'
 
 INSTALLED_APPS = [
     # django apps
-    'grappelli',
+#    'grappelli',
     'filebrowser',
     'django.contrib.auth',
     'django.contrib.contenttypes',

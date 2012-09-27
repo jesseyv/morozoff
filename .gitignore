@@ -1,5 +1,5 @@
 *.py[co]
 .idea
-media/cache
+/morozoff/media/*
 local_settings.py
 database.sqlite
