@@ -2,7 +2,7 @@
 from django.db import models
 from shop.order_signals import completed
 
-from morozoff.apps.customshop.base.models import BaseProductImage, BaseProduct
+from base import BaseProductImage, BaseProduct
 from morozoff.apps.customshop.signals import confirmed_email_notification
 
 
