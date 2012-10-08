@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.conf.urls.defaults import *
+from django.conf.urls.defaults import patterns, url, include
 from django.contrib import admin
 
 
@@ -14,6 +14,7 @@ urlpatterns = patterns('',
 #    (r'^feedback/', include('feedback.urls')),
 #    url(r'^', include('apps.articles.urls')),
 #    (r'^cart/', include('shop_simplevariations.urls')),
+    url(r'^catalog/', include('shop_categories.urls')),
     (r'^', include('morozoff.apps.customshop.urls')),
 )
 

@@ -3,6 +3,18 @@ from common_settings import *
 
 from local_settings import *
 
+SHOP_SHIPPING_BACKENDS = [
+    'morozoff.apps.customshop.shipping.backends.pickup.PickupShipping',
+    'morozoff.apps.customshop.shipping.backends.delivery_in_moscow.DeliveryInMoscowShipping',
+    ]
+SHOP_PAYMENT_BACKENDS = [
+    'morozoff.apps.customshop.payments.backends.pay_with_cash.PayWithCashBackend'
+]
+
+SHOP_ADDRESS_MODEL = 'morozoff.apps.customshop.address.models.Address'
+SHOP_PRODUCT_MODEL = 'morozoff.apps.customshop.models.CustomProduct'
+SHOP_CATEGORIES_CATEGORY_MODEL = 'morozoff.apps.customshop.models.category.Category'
+
 INSTALLED_APPS = INSTALLED_APPS + [
     'sorl.thumbnail',
     'polymorphic',
@@ -11,7 +23,9 @@ INSTALLED_APPS = INSTALLED_APPS + [
     'south',
     'sitetree',
     'tinymce',
-    'shop_simplecategories',
+    'treeadmin',
+    'shop_categories',
+    'django_extensions',
 #    'feedback',
     # Our own apps
     'morozoff.apps.common',
@@ -20,18 +34,6 @@ INSTALLED_APPS = INSTALLED_APPS + [
     'morozoff.apps.articles',
     'morozoff.apps.banners',
 ]
-
-SHOP_SHIPPING_BACKENDS = [
-    'morozoff.apps.customshop.shipping.backends.pickup.PickupShipping',
-    'morozoff.apps.customshop.shipping.backends.delivery_in_moscow.DeliveryInMoscowShipping',
-]
-SHOP_PAYMENT_BACKENDS = [
-    'morozoff.apps.customshop.payments.backends.pay_with_cash.PayWithCashBackend'
-]
-
-SHOP_ADDRESS_MODEL = 'morozoff.apps.customshop.address.models.Address'
-
-#SHOP_PRODUCT_MODEL = 'morozoff.apps.customshop.models.CustomProduct'
 
 TINYMCE_JS_URL = os.path.join(STATIC_ROOT, "tiny_mce/tiny_mce.js")
 TINYMCE_JS_ROOT = os.path.join(MEDIA_ROOT, "tiny_mce")

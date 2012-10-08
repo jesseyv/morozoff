@@ -2,12 +2,12 @@
 from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from shop.models.productmodel import Product
+from shop_categories.models.defaults.product.base import CategoryProductBase
 
 from morozoff.apps.common.models import ObjectMixin, upload_to
 
 
-class BaseProduct(Product, ObjectMixin):
+class BaseProduct(CategoryProductBase, ObjectMixin):
     class Meta:
         abstract = True
 

@@ -108,8 +108,6 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, 'templates'),
 )
 
-SHOP_ADDRESS_MODEL = 'apps.customshop.address.models.Address'
-
 INSTALLED_APPS = [
     # django apps
 #    'grappelli',
