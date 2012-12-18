@@ -12,7 +12,6 @@ django-polymorphic==0.2
 django-shop==0.1.1
 django-shop-categories==0.8.beta.2
 django-sitetree==0.9.1
-django-tinymce==1.5.1b4
 django-treeadmin==0.1
 ipython==0.11
 sorl-thumbnail==11.12
