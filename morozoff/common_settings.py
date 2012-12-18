@@ -110,7 +110,7 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = [
     # django apps
-#    'grappelli',
+    'grappelli',
     'filebrowser',
     'django.contrib.auth',
     'django.contrib.contenttypes',
