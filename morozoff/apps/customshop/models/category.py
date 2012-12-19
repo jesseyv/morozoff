@@ -5,7 +5,6 @@ from shop_categories.models.defaults.category.base import ProductCategoryBase
 
 class Category(ProductCategoryBase):
     description = models.TextField(u'Описание')
-#    image = models.ImageField(upload_to='categoryimages/', null=True, blank=True)
 
     class Meta:
         abstract = False

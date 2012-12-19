@@ -177,12 +177,11 @@
 		margin-left: -80px!important;
 	}
 	
-	#seoListContainer .poptop .show {width: 160px;height: 150px; padding-bottom: 158px; margin-top: -160px; margin-left: -10px;}
-	#seoListContainer .popbottom .show {width: 160px;height: 150px; padding-top: 158px; margin-top: -10px; margin-left: -10px;}
-	
-	
+#seoListContainer .poptop .show {width: 160px;height: 150px; padding-bottom: 158px; margin-top: -160px; margin-left: -10px;}
+#seoListContainer .popbottom .show {width: 160px;height: 150px; padding-top: 158px; margin-top: -10px; margin-left: -10px;}
+
 #catalogAjax {
-	display: none;
+	/*display: none;*/
 }
 .noShowSeoPage #catalogAjax {
 	display: block;

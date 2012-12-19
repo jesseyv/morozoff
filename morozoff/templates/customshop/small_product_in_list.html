@@ -1,0 +1,39 @@
+{% load thumbnail %}
+<div class="innerContainer" id="{{ product.slug }}">
+    <div class="show" style="display: none;">
+        <div class="decription">
+            <div class="seoDetailText" style="display: block;">
+                {{ product.get_name }}
+                <br>
+                {{ product.description|safe }}
+            </div>
+            <div class="showPrice">
+                {{ product.unit_price }} р.
+            </div>
+            <div>
+                <form method="post" action="{% url cart %}">{% csrf_token %}
+                    <input type="hidden" name="add_item_id" value="{{ product.pk }}">
+                    <input type="hidden" name="add_item_quantity" value="1">
+                    <input type="image" src="{{ STATIC_URL }}images/to_buy.jpg">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="contain" style="z-index: 50; border-color: rgb(239, 237, 238);">
+        <div class="photo">
+            {% if product.logo %}
+                <a href="{{ product.get_absolute_url }}">
+                    {% thumbnail product.logo.src "140x140" crop="center" as im %}
+                        <img src="{{ im.url }}" alt="{{ product.logo.alt }}" style="display: inline;">
+                    {% endthumbnail %}
+                </a>
+            {% endif %}
+        </div>
+        <div class="pricesContainer withOldPriceContainer">
+            <div class="price">
+                <img src="{{ STATIC_URL }}img/korzina_.png" border="0" width="14" height="10" class="basket">
+                {{ product.unit_price }} р.
+            </div>
+        </div>
+    </div>
+</div>
