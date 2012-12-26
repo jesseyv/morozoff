@@ -72,8 +72,10 @@ class CustomCategoryShopListView(ShopListView):
     def get_queryset(self):
         category = get_object_or_404(Category, path=self.kwargs['path'])
         self.category = category
+        categories = [category.id] + category.children.values_list('id',
+                                                                   flat=True)
         queryset = super(CustomCategoryShopListView, self).get_queryset()
-        return queryset.filter(main_category__path=category.path).distinct()
+        return queryset.filter(main_category__in=categories).distinct()
 
     def get_context_data(self, **kwargs):
         return super(CustomCategoryShopListView, self).get_context_data(

@@ -5,6 +5,9 @@
             <li>
                 <a href="{% sitetree_url for item %}" {% if item.hint %}title="{{ item.hint }}"{% endif %}>{{ item.title_resolved }}</a>
             </li>
+            {% if item.has_children %}
+                {% sitetree_children of item for menu template "sitetree/menu_children.html" %}
+            {% endif %}
         {% endfor %}
     </ul>
 {% endspaceless %}

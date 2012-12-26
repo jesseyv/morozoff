@@ -1,8 +1,8 @@
 {% load sitetree %}
-    {% for item in sitetree_items %}
-        <a class='menuItem'  id='menuIdindex' href="{% sitetree_url for item %}"
-           {% if item.hint %}title="{{ item.hint }}"{% endif %}>{{ item.title_resolved }}</a>
-        {% if item.has_children %}
-            {% sitetree_children of item for menu template "sitetree/menu_children.html" %}
-        {% endif %}
-    {% endfor %}
+{% for item in sitetree_items %}
+    <a class='menuItem'  id='menuIdindex' href="{% sitetree_url for item %}"
+       {% if item.hint %}title="{{ item.hint }}"{% endif %}>{{ item.title_resolved }}</a>
+    {% if item.has_children %}
+        {% sitetree_children of item for menu template "sitetree/menu_children.html" %}
+    {% endif %}
+{% endfor %}

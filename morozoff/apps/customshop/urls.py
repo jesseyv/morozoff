@@ -89,11 +89,11 @@ urlpatterns = patterns('',
         CategoryProductDetailView.as_view(),
         name='product_detail'
     ),
-    url(r'^catalog/(?P<path>[0-9A-Za-z-]+)/$',
+    url(r'^catalog/(?P<path>[0-9A-Za-z-//]+)/page(?P<page>[0-9]+)/$',
         CustomCategoryShopListView.as_view(model=Product),
         name='product_list'
     ),
-    url(r'^catalog/(?P<path>[0-9A-Za-z-]+)/page(?P<page>[0-9]+)/$',
+    url(r'^catalog/(?P<path>[0-9A-Za-z-//]+)/$',
         CustomCategoryShopListView.as_view(model=Product),
         name='product_list'
     ),
