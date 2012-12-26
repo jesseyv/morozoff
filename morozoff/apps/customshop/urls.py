@@ -78,6 +78,13 @@ urlpatterns = patterns('',
         ),
         name='product_list'
     ),
+    url(r'^catalog/page(?P<page>[0-9]+)/$',
+        ListView.as_view(
+            model=CustomProduct,
+            paginate_by=12
+        ),
+        name='product_list'
+    ),
     url(r'^catalog/(?P<path>[0-9A-Za-z-]+)/~(?P<slug>[0-9A-Za-z-_.]+)/$',
         CategoryProductDetailView.as_view(),
         name='product_detail'

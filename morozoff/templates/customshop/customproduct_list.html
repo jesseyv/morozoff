@@ -27,7 +27,7 @@
                             </div>
                         {% else %}
                             <div id="page{{ page_range }}" class="navPage">
-                                <a href="{% if page_range != 1 %}{% url product_list category.path page_range%}{% else %}{% url product_list category.path %}{% endif %}">{{ page_range }}</a>
+                                <a href="{% if page_range != 1 %}{% if category.path %}{% url product_list path=category.path page=page_range %}{% else %}{% url product_list page=page_range %}{% endif %}{% else %}{% if category.path %}{% url product_list path=category.path %}{% else %}{% url product_list %}{% endif %}{% endif %}">{{ page_range }}</a>
                             </div>
                         {% endif %}
                     {% endfor %}
