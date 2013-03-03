@@ -1,67 +1,31 @@
-$(window).resize(function() {
-    resSubMenu();
-    });
-
-function resSubMenu() {
-    var menus = $('#topMenuContainer .subMenu');
-    $.each(menus, function(i, menu) {
-        var id = $(menu).attr('id').substr(9, 50);
-        var menuItem = $('#menuId' + id);
-        var offset = menuItem.offset();
-        $(menu).css('left', offset.left).css('top', offset.top);
-    });
-}
-
-var selectedMenu = false;
-var hoverTopItem = false;
-var hoverSubMenuCotainer = false;
+var hidemenu = true;
 
 function hideMenuContainer() {
-    if(!hoverTopItem && !hoverSubMenuCotainer) {
-    $('#topMenuContainer .subMenu').hide();
+    if(hidemenu) {
+        $('#topMenuContainer .subMenu').hide();
     }
-    window.setTimeout('hideMenuContainer()', 100);
 }
 
-function menuPopUpManager() {
-    $('#topMenuContainer .subMenu').each(function() {
-        var id = $(this).attr('id').substr(9, 50);
-        var offset = $('#menuId' + id).offset();
-        $(this).css('left', offset.left).css('top', offset.top);
-    });
-
-    $('#topMenuContainer a.menuItem').hover(function() {
-        resSubMenu();
-        if ($(this).attr('id')) {
-            if(selectedMenu != $(this).attr('id').substr(6, 50)) {
-                $('#subMenuId' + selectedMenu).hide();
-            }
-        }
-        // console.log(selectedMenu);
-        selectedMenu = $(this).attr('id').substr(6, 50);
-        hoverTopItem = true;
-        $('#subMenuId' + selectedMenu).show();
-    },
-    function() {
-        hoverTopItem = false;
+$("#topMenuContainer .main-level").on("hover", function(e){
+    if (e.type == 'mouseenter') {
+        hidemenu = false;
+        $(this).next("ul.subMenu").show();
+    } else if (e.type == 'mouseleave') {
+        hidemenu = true;
+        window.setTimeout('hideMenuContainer()', 200);
     }
-    );
+});
 
-    $('#topMenuContainer .subMenu').hover(function() {
-        hoverSubMenuCotainer = true;
-        },
-    function() {
-        hoverSubMenuCotainer = false;
-        });
-
-    hideMenuContainer();
-}
+$('#topMenuContainer .subMenu').on("hover", function(e){
+    if (e.type == 'mouseenter') {
+        hidemenu = false;
+    } else if (e.type == 'mouseleave') {
+        hidemenu = true;
+        window.setTimeout('hideMenuContainer()', 200);
+    }
+});
 
 $(function() {
-
-    $('div#topMenuContainer').ready(function() {
-        menuPopUpManager();
-    });
 
     $('.flexslider').flexslider({
         animation: "slide"
