@@ -1,5 +1,5 @@
-Django==1.4.3
-Pillow==1.7.7
+Django==1.4.8
+Pillow
 South==0.7.6
 Werkzeug==0.8.3
 django-classy-tags==0.3.4.1
@@ -16,3 +16,4 @@ django-treeadmin==0.1
 ipython==0.11
 sorl-thumbnail==11.12
 wsgiref==0.1.2
+django-tinymce==1.5.1b4
