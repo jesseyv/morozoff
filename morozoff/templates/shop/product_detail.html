@@ -1,47 +1,49 @@
-{% extends 'base.html' %}
-{% load thumbnail banners %}
+{% extends "base.html" %}
+{% load thumbnail %}
 
-{% block title %}
-    купить пуховик в москве
+{% block css %}
+    <link href="{{ STATIC_URL }}css/detail.css" type="text/css" rel="stylesheet" />
 {% endblock %}
 
-{% block meta-kw %}{{ object.meta_keywords }}{% endblock %}
-{% block meta-desc %}{{ object.meta_description }}{% endblock %}
-
-{% block body %}
-    {% with object as product %}
-    <h1>{{ object.get_name }}</h1>
-    <div class="product-detail">
-    <div class="images">
-        {% for image in object.images_ordered %}
-            {% if not forloop.counter0 %}
-                {% thumbnail image.src "132x200" crop="center" as im %}
-                    <a rel="prettyPhoto[pp_gal]" href="{{ image.url }}" title="">
-                        <img alt="{{ image.alt }}" src="{{ im.url }}" />
-                    </a>
-                {% endthumbnail %}
-            {% else %}
-                {% thumbnail image.src "50x50" crop="center" as im %}
-                    <a rel="prettyPhoto[pp_gal]" href="{{ image.url }}" title="">
-                        <img alt="{{ image.alt }}" src="{{ im.url }}" class="icon"/>
-                    </a>
-                {% endthumbnail %}
-            {% endif %}
-        {% endfor %}
-    </div>
-    <div class="description">
-    {% autoescape off %}
-        {{ object.description }}
-        <div class="clearfix"></div>
-        {% include 'snippets/price.html' %}
-{#        {% include 'snippets/product_discount.html' %}#}
-{#        <div class="leftflated">{% banner "discount" %}</div>#}
-        <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="button" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,lj,friendfeed,moikrug"></div>
-        <div class="clearfix"></div>
-    </div>
-    <div class="clearfix"></div>
-    <div>{{ object.long_text }}</div>
-    {% endautoescape %}
+{% block content %}
+    {% with product=object %}
+        <div id="detail_catalog">
+            <div class="product_info">
+                <div id="photo">
+                    <div class="detail_picture">
+                        {% if product.logo %}
+                            {% thumbnail product.logo.src "400x400" crop="center" as im %}
+                                <img src="{{ im.url }}" alt="{{ product.logo.alt }}" />
+                            {% endthumbnail %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div id="right_column">
+                    <div id="detail_text">
+                        <div class="pageHeader">
+                            <h1 class="catalogHeader gBColor">
+                                {{ product.get_name }}
+                            </h1>
+                        </div>
+                        <div class="pageText">
+                            <div class="detail_text">
+                                {{ product.description|safe }}
+                            </div>
+                        </div>
+                        <div class="showValue">
+                            {{ product.unit_price }} р.
+                        </div>
+                        <div>
+                            <form method="post" action="{% url cart %}">{% csrf_token %}
+                                <input type="hidden" name="add_item_id" value="{{ product.pk }}">
+                                <input type="hidden" name="add_item_quantity" value="1">
+                                <input type="image" src="{{ STATIC_URL }}images/to_buy.jpg">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clr"></div>
     {% endwith %}
-</div>
 {% endblock %}

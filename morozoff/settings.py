@@ -22,11 +22,9 @@ INSTALLED_APPS = INSTALLED_APPS + [
     # useful 3rd party apps
     'south',
     'sitetree',
-    'tinymce',
     'treeadmin',
     'shop_categories',
     'django_extensions',
-#    'feedback',
     # Our own apps
     'morozoff.apps.common',
     'morozoff.apps.customshop',
@@ -34,16 +32,6 @@ INSTALLED_APPS = INSTALLED_APPS + [
     'morozoff.apps.articles',
     'morozoff.apps.banners',
 ]
-
-TINYMCE_JS_URL = os.path.join(STATIC_ROOT, "tiny_mce/tiny_mce.js")
-TINYMCE_JS_ROOT = os.path.join(MEDIA_ROOT, "tiny_mce")
-TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "table,paste,searchreplace",
-    'theme': "advanced",
-    'cleanup_on_startup': True,
-    'custom_undo_redo_levels': 10,
-}
-
 
 TEMPLATE_DEBUG = DEBUG
 
@@ -59,13 +47,13 @@ if DEBUG:
         'debug_toolbar.panels.signals.SignalDebugPanel',
         'debug_toolbar.panels.logger.LoggingPanel',
     )
-    MIDDLEWARE_CLASSES = (('debug_toolbar.middleware.DebugToolbarMiddleware',)
-                                                        + MIDDLEWARE_CLASSES)
+    # MIDDLEWARE_CLASSES = (('debug_toolbar.middleware.DebugToolbarMiddleware',)
+    #                                                     + MIDDLEWARE_CLASSES)
     INTERNAL_IPS = ('127.0.0.1',)
     DEBUG_TOOLBAR_CONFIG = dict(
-        INTERCEPT_REDIRECTS = False
+        INTERCEPT_REDIRECTS=False
     )
-    INSTALLED_APPS += ['debug_toolbar',]
+    # INSTALLED_APPS += ['debug_toolbar',]
 
     STATICFILES_DIRS += (os.path.join(PROJECT_DIR, 'media'),)
 else :

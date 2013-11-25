@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 from django.core.urlresolvers import reverse
+from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
-from django.views.generic import DeleteView, DetailView
+from django.views.generic import DeleteView
 from shop.models.defaults.cartitem import CartItem
 from shop.util.address import assign_address_to_request
 from shop.views.checkout import CheckoutSelectionView
+from shop.views import ShopListView
 from shop_categories.models import Category
 
 from forms import OrderExtraInfoForm
@@ -62,3 +64,19 @@ class CartItemDeleteView(DeleteView):
     model = CartItem
 
     success_url = '/cart/'
+
+
+class CustomCategoryShopListView(ShopListView):
+    paginate_by = 12
+
+    def get_queryset(self):
+        category = get_object_or_404(Category, path=self.kwargs['path'])
+        self.category = category
+        categories = [category.id] + list(category.children.values_list('id',
+                                                                   flat=True))
+        queryset = super(CustomCategoryShopListView, self).get_queryset()
+        return queryset.filter(main_category__in=categories).distinct()
+
+    def get_context_data(self, **kwargs):
+        return super(CustomCategoryShopListView, self).get_context_data(
+            category=self.category, **kwargs)

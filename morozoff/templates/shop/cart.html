@@ -1,84 +1,106 @@
-{% extends 'base.html' %}
-{% load i18n thumbnail %}
+{% extends "base.html" %}
+{% load thumbnail %}
 
-
-{% block title %}{% trans "Your shopping cart" %}{% endblock %}
-
-{% block rightside %}{% endblock %}
+{% block css %}
+    <link href="{{ STATIC_URL }}css/basket_style.css" type="text/css" rel="stylesheet" />
+{% endblock %}
 
 {% block content %}
-<h1>{% trans "Your shopping cart" %}</h1>
-{% if cart_items %}
-    <form method="post" action="{% url cart_update %}">
-      {% csrf_token %}
-      <table class="cart" cellpadding="0" cellspacing="0">
-        <thead>
-          <tr>
-          <th class="product-name-cell">{% trans "Product name" %}</th>
-          <th class="product-size-cell">Размер</th>
-          <th class="unit-price-cell">Цена</th>
-          <th class="quantity-cell">{% trans "Quantity" %}</th>
-          <th class="summary-cell">Суммарная стоимость</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for item in cart_items %}
-            {% if item.quantity > 0 %}
-            <tr class="nonzerInvalid block tag: 'thumbnail', expected 'endwith'
-o-quantity order-item">
-              <td class="product-name-cell">
-                    {% with item.product.images_ordered.0 as image %}
-                      {% thumbnail image.src "66x100" crop="center" as im %}
-                        <a rel="prettyPhoto[pp_gal_{{ item.pk }}]" href="{{ image.url }}" title="">
-                            <img alt="{{ image.alt }}" src="{{ im.url }}" />
-                        </a>
-                    {% endthumbnail %}
-                  {% endwith %}
-                  {{ item.product.get_name }}</td>
-              <td>
-              </td>
-              <td class="unit-price-cell">{{item.product.get_price}} р</td>
-              <td class="quantity-cell"><input type="text" name="update_item-{{ item.id }}"
-                value="{{ item.quantity }}"></td>
-              <td class="summary-cell">{{ item.line_subtotal }} р</td>
+    <div style="font-size:16px; color:#414141; text-transform:uppercase;">Моя корзина</div>
+    {% if cart_items %}
+        <form method="post" action="{% url cart_update %}">
+            {% csrf_token %}
+            {{ formset.management_form }}
+
+            <table cellpadding="0" cellspacing="0" border="0" class="itemtable">
+                <tbody><tr>
+                    <td class="hitem name">Наименование товара</td>
+                    <td class="hitem number">Количество</td>
+                    <td class="hitem price">Цена</td>
+                    {#                    <td class="hitem discount">Скидка</td>#}
+                    <td class="hitem amount">Сумма</td>
+                    <td class="hitem remove">Удалить</td>
+                </tr>
+                <form method="POST" name="basket_items"></form>
+                {% for item in cart_items %}
+                    <tr>
+                        <td class="item name">
+                            <table width="100%">
+                                <tbody>
+                                <tr>
+                                    <td class="itempic" rowspan="4">
+                                        {% with item.product.images_ordered.0 as image %}
+                                            {% thumbnail image.src "96x96" crop="center" as im %}
+                                                <a rel="prettyPhoto[pp_gal_{{ item.pk }}]" href="{{ image.url }}" title="{{ item.product.get_name }}">
+                                                    <img alt="{{ image.alt }}" src="{{ im.url }}" />
+                                                </a>
+                                            {% endthumbnail %}
+                                        {% endwith %}
+                                    </td>
+                                    <td class="itemname">
+                                        {{ item.product.get_name }}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td class="item number">
+                            <input type="text" name="form-{{ forloop.counter0 }}-quantity" id="id_form-{{ forloop.counter0 }}-quantity" value="{{ item.quantity }}"> шт.
+                            <input type="hidden" name="form-{{ forloop.counter0 }}-id" value="{{ item.quantity }}" id="id_form-{{ forloop.counter0 }}-id">
+                        </td>
+                        <td class="item price">{{item.product.get_price}} р.</td>
+
+                        <td class="item amount">{{ item.line_subtotal }} р.</td>
+
+                        <td class="item number">
+                            <a href="{% url cart_delete_single item.id %}">Удалить</a>
+                        </td>
+
+                    </tr>
+                {% endfor %}
+
+                </tbody></table>
+
+            <input type="submit" value="Пересчитать корзину"/>
+        </form>
+
+        <form action="{% url cart_delete %}" method="post">
+            {% csrf_token %}
+            <p><input type="submit" value="Очистить корзину"/></p>
+        </form>
+
+
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="">
+            <tbody>
+            <tr>
+                <td class="forminfo" valign="top">
+
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tbody>
+                        <tr>
+                            <td align="left" style="font-size:14px;" valign="middle" height="30"></td><td align="right" style="font-size:14px;"></td>
+                        </tr>
+                        <tr>
+                            <td align="left" style="border-bottom:1px dotted #FF0000; font-size:14px; font-weight:bold; color:#F00;">ИТОГО:</td>
+                            <td align="right" style="border-bottom:1px dotted #FF0000; font-size:14px; font-weight:bold; color:#F00;">
+                                {{cart.total_price}} р.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" height="90" valign="middle" align="center" class="submit">
+                                <a class="checkout-link" href="{% url checkout_selection %}">Оформить заказ</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <br>
+
+                </td>
             </tr>
-            {% if item.extra_price_fields.0.1 %}{# expression for show rebate if it exist #}
-            {% for extra_price_field in item.extra_price_fields %}
-              <tr class="discount-row">
-                <td colspan="3">{{ extra_price_field.0 }}</td>
-                <td>{{ extra_price_field.1|floatformat }} р</td>
-              </tr>
-            {% endfor %}
-            {% endif %}
-{#            <tr><td colspan="2">&nbsp;</td><td>{% trans "Line Total" %}:</td><td>{{item.line_total}} р</td></tr>#}
-            {% endif %}
-          {% endfor %}
-        </tbody>
+            </tbody>
+        </table>
 
-        <tfoot>
-{#          <tr><td colspan="2">&nbsp;</td><td>{% trans "Cart Subtotal" %}</td><td>{{cart.subtotal_price}} р</td></tr>#}
-{#          {% for extra_price_field in cart.extra_price_fields %}#}
-{#            <tr>#}
-{#              <td colspan="2">&nbsp;</td>#}
-{#              <td>{{ extra_price_field.0 }}</td>#}
-{#              <td>{{ extra_price_field.1 }}</td>#}
-{#            </tr>#}
-{#          {% endfor %}#}
-          <tr class="order-item"><th colspan="4">Общая стоимость заказа</th><th class="summary-cell">{{cart.total_price}} р</th></tr>
-          <tr><td colspan="3">&nbsp;</td><td colspan="2"><input type="submit" value="Пересчитать корзину"/></td></tr>
-          <tr><td colspan="3">&nbsp;</td><td colspan="2"><a class="checkout-link" href="{% url checkout_selection %}">Оформить заказ</a></td></tr>
-        </tfoot>
-      </table>
-    </form>
-
-    <form action="{% url cart_delete %}" method="post">
-      {% csrf_token %}
-      <p><input type="submit" value="Очистить корзину"/></p>
-    </form>
-
-{% else %}
-<p>
-  {% trans "Shopping cart is empty" %}
-</p>
-{% endif %}
+    {% else %}
+        <h3>Корзина пуста</h3>
+    {% endif %}
 {% endblock %}

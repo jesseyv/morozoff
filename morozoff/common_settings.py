@@ -110,7 +110,7 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = [
     # django apps
-#    'grappelli',
+    'grappelli',
     'filebrowser',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -145,13 +145,3 @@ LOGGING = {
         },
     }
 }
-
-TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "table,paste,searchreplace",
-    'theme': "advanced",
-    'cleanup_on_startup': True,
-    'custom_undo_redo_levels': 10,
-}
-
-TINYMCE_JS_URL = os.path.join(STATIC_ROOT, "tiny_mce/tiny_mce.js")
-TINYMCE_JS_ROOT = os.path.join(MEDIA_ROOT, "tiny_mce")

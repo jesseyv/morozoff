@@ -159,7 +159,7 @@ color:#747474;
 
 
 #right_column{
-	/* Она теперь никуя не RIGHT*/
+	/* пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ RIGHT*/
 	float:left;
 	width: 340px;
 	height: 380px; 
@@ -203,6 +203,9 @@ color:#747474;
 			margin-bottom: 15px;
 			font-weight: bold;
 		}
+        .showValue {
+            font-size: 20px;
+        }
 		
 
 #rightRightColumn {

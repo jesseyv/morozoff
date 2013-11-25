@@ -20,6 +20,11 @@ class BaseProduct(CategoryProductBase, ObjectMixin):
         except :
             return None
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('product_detail', (), {'slug': self.slug,
+                                       'path': self.main_category.path})
+
 
 class BaseProductParameter(ObjectMixin):
     name = models.CharField(max_length=256)

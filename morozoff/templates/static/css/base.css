@@ -374,3 +374,9 @@ textarea {width: 350px;}
 }
 
 .yashare-auto-init {float: left;}
+
+.flexslider {
+    width: 907px;
+    height: 619px;
+    margin: 0 auto;
+}
