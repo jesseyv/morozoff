@@ -337,7 +337,7 @@ div.leftArrow {margin-left: -13px;margin-top: 260px;display: none;}*/
 	margin-top: 5px;
 }
 .addInBasketLink{
-	background-image:url(http://www.love-sl.ru/img/basket_img.png);
+	background-image:url(../img/basket_img.png);
 	background-repeat:no-repeat;
 	background-position:left;
 	padding-left:16px;

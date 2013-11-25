@@ -443,23 +443,6 @@ function catalog()
         });
     }
 
-
-    this.sendPageDataToGa = function(page)
-    {
-        _gaq.push(["_trackPageview", page]);
-
-        if(allow_user_script_in_ajax) {
-
-            eval("(function(d){ var HEIAS_PARAMS = []; HEIAS_PARAMS.push(['type', 'ppx'], ['ssl', 'auto'], ['n', '12564'], ['cus', '14121']); HEIAS_PARAMS.push(['pb', '1']); if (typeof window.HEIAS === 'undefined') { window.HEIAS = []; } window.HEIAS.push(HEIAS_PARAMS); var scr = d.createElement('script'); scr.async = true; scr.src = (d.location.protocol === 'https:' ? 'https:' : 'http:') + '//ads.heias.com/x/heias.async/p.min.js'; var elem = d.getElementsByTagName('script')[0]; elem.parentNode.insertBefore(scr, elem); }(document));");
-
-            $('#dataToGooConversion').remove();
-            $('body').append('<div id="dataToGooConversion" style="display:inline;"><img height="1" width="1" style="border-style:none;" alt="" src="http://www.googleadservices.com/pagead/conversion/1036047376/?label=3_q_CIii1QIQkKiD7gM&amp;guid=ON&amp;script=0" /></div>');
-
-        }
-    }
-
-
-
     this.checkFilterChanges = function()
     {
 
@@ -521,7 +504,7 @@ function catalog()
 
         if(objCatalog.pages.showPrev == true) {
             $('#bigLeftArraw').show();
-            content = content + "<div id='leftArrowId' class='arrow leftArrow'><img src='/img/catalog.list/big_left.png' alt='' title='������'/></div>";
+            content = content + "<div id='leftArrowId' class='arrow leftArrow'><img src='/static/img/catalog.list/big_left.png' alt='' title='������'/></div>";
         }
         else {
             $('#bigLeftArraw').hide();
@@ -549,7 +532,7 @@ function catalog()
         }
         if(objCatalog.pages.showNext == true) {
             $('#bigRightArraw').show();
-            content = content + "<div id='rightArrowId' class='arrow rightArrow'><img src='/img/catalog.list/big_right.png' alt='' title='������'/></div>";
+            content = content + "<div id='rightArrowId' class='arrow rightArrow'><img src='/static/img/catalog.list/big_right.png' alt='' title='������'/></div>";
         }
         else {
             $('#bigRightArraw').hide();
@@ -735,7 +718,7 @@ function catalog()
         if(jew.sprice && jew.quantity) {
             basketButton = '<div><a href=\'\' class=\'addInBasketLink\' onclick="addPropductInBasket(this); return false;">� �������</a></div>';
             /*addClassOrd='ordpoint';*/
-            addClassOrd='<img src="http://www.love-sl.ru/img/korzina_.png" border="0" width="14" height="10" class="basket">';
+            addClassOrd='<img src="/static/img/korzina_.png" border="0" width="14" height="10" class="basket">';
         }
 
         var content = "\
@@ -1125,7 +1108,7 @@ function catalog()
             }
 
             field.css({
-                'background-image':'url("/img/catalog.list/bg_select_w.png")',
+                'background-image':'url("/static/img/catalog.list/bg_select_w.png")',
                 'background-position' : '33px',
                 'background-repeat' : 'no-repeat',
                 'background-color' : '#ffffff',
